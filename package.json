@@ -1,0 +1,10 @@
+{
+  "name": "plataforma-lingua-portuguesa",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Atividades escolares de Lingua Portuguesa com quiz e jogo de trilha.",
+  "scripts": {
+    "check": "node tools/check-project.js",
+    "validate:trilha": "node tools/validate-trilha-data.js"
+  }
+}

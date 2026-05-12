@@ -1,32 +1,21 @@
 # Trilha das Habilidades
 
-A **Trilha das Habilidades** é um jogo de caminho para trabalhar Língua Portuguesa. O aluno joga um dado, a caravana anda pelo tabuleiro e uma pergunta aparece quando ele para em uma casa.
-
-O jogo foi feito para parecer uma atividade de sala, com visual próprio, caravana estudantil, dado 3D, tema claro e tema escuro.
+Jogo de caminho para revisar Língua Portuguesa com caravana estudantil, dado 3D e perguntas por casa. Foi pensado para uso em sala, projetor, laboratório ou estudo individual.
 
 ## Como jogar
 
-1. Abra `index.html` no navegador.
+1. Abra `index.html`.
 2. Clique em **Iniciar jogo**.
-3. Clique em **Jogar dado**.
-4. Espere a caravana andar.
-5. Responda à pergunta que aparecer.
+3. Jogue o dado.
+4. A caravana anda até a casa sorteada.
+5. Responda à pergunta.
 6. Se acertar, permanece na casa.
 7. Se errar, volta para a casa anterior.
-8. Continue até chegar ao final da trilha.
+8. Ao chegar ao fim, o jogo mostra um resumo por habilidade.
 
-## Regras
+## Habilidades
 
-- O dado define quantas casas a caravana anda.
-- Cada casa tem uma pergunta.
-- Cada pergunta pertence a uma habilidade de Português.
-- Ao acertar, o aluno ganha ponto.
-- Ao errar, o aluno retorna para a posição anterior.
-- O jogo termina quando a última casa é alcançada e respondida.
-
-## Habilidades trabalhadas
-
-O tabuleiro tem 20 casas e trabalha 10 habilidades:
+O jogo trabalha 10 habilidades:
 
 1. Leitura e interpretação
 2. Ortografia
@@ -39,91 +28,103 @@ O tabuleiro tem 20 casas e trabalha 10 habilidades:
 9. Produção textual
 10. Coesão e coerência
 
-Cada habilidade aparece em duas perguntas.
+Cada partida usa 2 perguntas por habilidade. O banco tem 5 perguntas por habilidade, então a trilha pode variar.
+
+## Tipos de pergunta
+
+| Tipo | Código |
+| --- | --- |
+| Múltipla escolha | `multiple-choice` |
+| Verdadeiro ou falso | `true-false` |
+| Completar lacuna | `fill-blank` |
+| Associação | `association` |
 
 ## Controles
 
-| Controle | O que faz |
+| Controle | Ação |
 | --- | --- |
-| `Jogar dado` | Sorteia um número e move a caravana |
-| `Modo alternado` | Alterna a organização das perguntas |
-| `Reiniciar` | Recomeça a partida |
-| `Tema dark` | Troca entre tema claro e escuro |
-| Engrenagem inicial | Abre as configurações antes da partida |
+| Jogar dado | Sorteia o dado e move a caravana |
+| Modo alternado | Distribui habilidades pela trilha |
+| Modo por habilidade | Agrupa perguntas da mesma habilidade |
+| Reiniciar | Começa a partida de novo |
+| Tema dark/claro | Alterna o visual |
+| Tela cheia | Ajuda em projetor e apresentações |
+
+Atalhos:
+
+| Tecla | Ação |
+| --- | --- |
+| `Espaço` ou `D` | Jogar dado |
+| `1` a `4` | Escolher alternativa |
+| `R` | Reiniciar |
+| `T` | Trocar tema |
+| `F` | Tela cheia |
+| `M` | Silenciar |
+| `Esc` | Fechar painel ou tela final |
 
 ## Configurações
 
-Na tela inicial, a engrenagem permite ajustar:
+A engrenagem da tela inicial permite ajustar:
 
 - tema escuro;
 - música;
 - sons;
 - animações;
 - decorações;
-- texto maior.
+- texto maior;
+- alto contraste;
+- narração de perguntas;
+- silenciar tudo.
 
-Essas opções ficam salvas no navegador.
+As escolhas ficam salvas no navegador.
 
-## Onde ficam as perguntas
+## Editar perguntas
 
-As habilidades ficam em `script.js`:
-
-```js
-const skills = [
-  "Leitura e interpretação",
-  "Ortografia"
-];
-```
-
-As perguntas ficam na constante:
-
-```js
-const questions = [
-  {
-    skill: "Ortografia",
-    prompt: "Qual palavra está escrita corretamente?",
-    options: ["Excessão", "Exceção", "Esceção", "Esseção"],
-    answer: 1,
-    explanation: "A escrita correta é exceção."
-  }
-];
-```
-
-O campo `answer` indica a alternativa correta:
+As perguntas ficam em:
 
 ```text
-0 = primeira alternativa
-1 = segunda alternativa
-2 = terceira alternativa
-3 = quarta alternativa
+data.js
 ```
 
-## Posição das casas
-
-As casas do tabuleiro são posicionadas por porcentagem:
+Formato:
 
 ```js
-const tilePositions = [
-  { x: 13.1, y: 85.4, rotate: 7 }
-];
+{
+  skill: "Pontuação",
+  type: "true-false",
+  difficulty: "facil",
+  prompt: "Verdadeiro ou falso: perguntas diretas terminam com ponto de interrogação.",
+  options: ["Verdadeiro", "Falso"],
+  answer: 0,
+  explanation: "Perguntas diretas usam ponto de interrogação."
+}
 ```
 
-Cada item define:
+Regras importantes:
 
-- `x`: posição horizontal;
-- `y`: posição vertical;
-- `rotate`: inclinação da casa.
+- `skill` precisa existir na lista de habilidades.
+- `type` precisa existir em `questionTypes`.
+- `difficulty` aceita `facil`, `medio` ou `dificil`.
+- `answer` começa em zero.
+- cada habilidade precisa ter pelo menos 2 perguntas.
+
+Depois de editar, rode na raiz do repositório:
+
+```bash
+node tools/validate-trilha-data.js
+```
 
 ## Arquivos
 
 | Arquivo | Função |
 | --- | --- |
-| `index.html` | Estrutura da tela inicial, controles, tabuleiro e modal |
-| `style.css` | Visual do jogo, temas, dado 3D, caravana e animações |
-| `script.js` | Regras, perguntas, dado, movimento e pontuação |
+| `index.html` | Estrutura da tela inicial, tabuleiro, controles e modais |
+| `style.css` | Visual, temas, animações, responsividade e acessibilidade |
+| `script.js` | Regras do jogo, dado, movimento, placar e configurações |
+| `data.js` | Habilidades, posições das casas, paleta das casas e perguntas |
 
-## Sugestão de uso em sala
+## Uso em sala
 
-O jogo funciona bem com projetor. A turma pode decidir a resposta em conjunto, ou o professor pode dividir a sala em equipes e alternar quem responde.
+Para uma aula mais dinâmica, divida a turma em equipes. Uma equipe joga o dado, discute a resposta e escolhe a alternativa. Depois alterne a vez. Ao final, use o resumo por habilidade para revisar o que gerou mais erro.
 
-Também pode ser usado individualmente no computador, principalmente como revisão antes de avaliação.
+Para projetor, use tela cheia e, se a sala estiver clara, ative alto contraste.

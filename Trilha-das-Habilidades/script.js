@@ -3,161 +3,22 @@
 const THEME_STORAGE_KEY = "trilha-habilidades:theme";
 const SETTINGS_STORAGE_KEY = "trilha-habilidades:settings";
 
-const skills = [
-  "Leitura e interpretação",
-  "Ortografia",
-  "Pontuação",
-  "Classes de palavras",
-  "Concordância",
-  "Sinônimos e antônimos",
-  "Acentuação",
-  "Uso dos porquês",
-  "Produção textual",
-  "Coesão e coerência"
-];
-
-const questions = [
-  {
-    skill: "Leitura e interpretação",
-    prompt: "Em um texto narrativo, quem conta os acontecimentos é chamado de:",
-    options: ["Personagem", "Narrador", "Leitor", "Autor da capa"],
-    answer: 1,
-    explanation: "O narrador é a voz que apresenta os acontecimentos da narrativa."
-  },
-  {
-    skill: "Leitura e interpretação",
-    prompt: "Quando uma informação está escrita claramente no texto, ela é:",
-    options: ["Implícita", "Contrária", "Explícita", "Inventada"],
-    answer: 2,
-    explanation: "Informação explícita aparece diretamente no texto."
-  },
-  {
-    skill: "Ortografia",
-    prompt: "Qual palavra está escrita corretamente?",
-    options: ["Excessão", "Exceção", "Esceção", "Esseção"],
-    answer: 1,
-    explanation: "A escrita correta é exceção."
-  },
-  {
-    skill: "Ortografia",
-    prompt: "Complete: O aluno fez uma boa ___.",
-    options: ["pesquiza", "pesquisa", "pezquisa", "pesquissa"],
-    answer: 1,
-    explanation: "A forma correta é pesquisa."
-  },
-  {
-    skill: "Pontuação",
-    prompt: "Qual sinal usamos ao final de uma pergunta direta?",
-    options: ["Ponto final", "Vírgula", "Ponto de interrogação", "Dois-pontos"],
-    answer: 2,
-    explanation: "Perguntas diretas terminam com ponto de interrogação."
-  },
-  {
-    skill: "Pontuação",
-    prompt: "Na frase 'Maria, venha aqui', a vírgula separa:",
-    options: ["Uma pergunta", "Um vocativo", "Uma data", "Uma resposta"],
-    answer: 1,
-    explanation: "Maria é o vocativo, termo usado para chamar alguém."
-  },
-  {
-    skill: "Classes de palavras",
-    prompt: "Na frase 'A casa azul é bonita', a palavra 'azul' é:",
-    options: ["Substantivo", "Verbo", "Adjetivo", "Artigo"],
-    answer: 2,
-    explanation: "Azul caracteriza o substantivo casa, por isso é adjetivo."
-  },
-  {
-    skill: "Classes de palavras",
-    prompt: "Qual alternativa apresenta um verbo?",
-    options: ["Feliz", "Correr", "Mesa", "Muito"],
-    answer: 1,
-    explanation: "Correr indica uma ação, portanto é verbo."
-  },
-  {
-    skill: "Concordância",
-    prompt: "Qual frase apresenta concordância correta?",
-    options: ["Os menino brinca.", "As meninas cantam.", "A casas caiu.", "Nós estudou."],
-    answer: 1,
-    explanation: "Sujeito plural pede verbo no plural: as meninas cantam."
-  },
-  {
-    skill: "Concordância",
-    prompt: "Complete corretamente: Eles ___ cedo para a escola.",
-    options: ["chega", "chegamos", "chegam", "cheguei"],
-    answer: 2,
-    explanation: "Com 'eles', usamos o verbo no plural: chegam."
-  },
-  {
-    skill: "Sinônimos e antônimos",
-    prompt: "Um sinônimo de 'alegre' é:",
-    options: ["Triste", "Contente", "Lento", "Frio"],
-    answer: 1,
-    explanation: "Contente tem sentido parecido com alegre."
-  },
-  {
-    skill: "Sinônimos e antônimos",
-    prompt: "Um antônimo de 'claro' é:",
-    options: ["Escuro", "Brilhante", "Limpo", "Leve"],
-    answer: 0,
-    explanation: "Escuro tem sentido contrário a claro."
-  },
-  {
-    skill: "Acentuação",
-    prompt: "Qual palavra precisa de acento?",
-    options: ["Cafe", "Casa", "Mesa", "Livro"],
-    answer: 0,
-    explanation: "A forma correta é café."
-  },
-  {
-    skill: "Acentuação",
-    prompt: "Qual palavra está acentuada corretamente?",
-    options: ["Arvore", "Árvore", "Aviao", "Ideia"],
-    answer: 1,
-    explanation: "Árvore é uma proparoxítona e recebe acento."
-  },
-  {
-    skill: "Uso dos porquês",
-    prompt: "Complete: Não fui à aula ___ estava doente.",
-    options: ["por que", "por quê", "porque", "porquê"],
-    answer: 2,
-    explanation: "Porque é usado em respostas e explicações."
-  },
-  {
-    skill: "Uso dos porquês",
-    prompt: "Complete: ___ você chegou atrasado?",
-    options: ["Por que", "Porque", "Porquê", "Por quê"],
-    answer: 0,
-    explanation: "Por que é usado no início de perguntas."
-  },
-  {
-    skill: "Produção textual",
-    prompt: "Antes de escrever um texto, é importante:",
-    options: ["Apagar tudo", "Planejar as ideias", "Copiar sem ler", "Ignorar o tema"],
-    answer: 1,
-    explanation: "Planejar ajuda a organizar as ideias antes da escrita."
-  },
-  {
-    skill: "Produção textual",
-    prompt: "A revisão de um texto serve para:",
-    options: ["Encontrar e corrigir problemas", "Tirar o título", "Mudar o autor", "Excluir todas as frases"],
-    answer: 0,
-    explanation: "Revisar permite melhorar clareza, escrita e organização."
-  },
-  {
-    skill: "Coesão e coerência",
-    prompt: "A palavra 'portanto' geralmente indica:",
-    options: ["Conclusão", "Dúvida", "Lugar", "Personagem"],
-    answer: 0,
-    explanation: "Portanto introduz uma conclusão."
-  },
-  {
-    skill: "Coesão e coerência",
-    prompt: "Um texto coerente apresenta ideias:",
-    options: ["Sem relação", "Organizadas e com sentido", "Sempre repetidas", "Todas contraditórias"],
-    answer: 1,
-    explanation: "Coerência é a relação lógica entre as ideias do texto."
-  }
-];
+const trilhaData = window.TRILHA_DATA || {};
+const questionTypes = trilhaData.questionTypes || {};
+const skillsMeta = Array.isArray(trilhaData.skills) ? trilhaData.skills : [];
+const skills = skillsMeta.map((skill) => (typeof skill === "string" ? skill : skill.name)).filter(Boolean);
+const skillIconMap = new Map(
+  skillsMeta
+    .filter((skill) => skill && typeof skill === "object")
+    .map((skill) => [skill.name, skill.icon || skill.name.slice(0, 2).toUpperCase()])
+);
+const questions = Array.isArray(trilhaData.questions) ? trilhaData.questions : [];
+const tilePositions = Array.isArray(trilhaData.tilePositions) ? trilhaData.tilePositions : [];
+const startPosition = trilhaData.startPosition || { x: 7.9, y: 80.7 };
+const tileColors = Array.isArray(trilhaData.tileColors)
+  ? trilhaData.tileColors
+  : ["#ef476f", "#ffd166", "#43aa8b", "#4cc9f0", "#b565c0", "#f3722c"];
+const questionsPerSkill = Math.max(1, Number(trilhaData.questionsPerSkill) || 2);
 
 const board = document.querySelector("#board");
 const rollButton = document.querySelector("#roll-button");
@@ -177,6 +38,7 @@ const questionTitle = document.querySelector("#question-title");
 const optionsList = document.querySelector("#options-list");
 const feedbackText = document.querySelector("#feedback-text");
 const continueButton = document.querySelector("#continue-button");
+const questionType = document.querySelector("#question-type");
 const caravan = document.querySelector("#caravan");
 const diceCube = document.querySelector("#dice-cube");
 const startScreen = document.querySelector("#start-screen");
@@ -189,32 +51,17 @@ const settingSfx = document.querySelector("#setting-sfx");
 const settingAnimations = document.querySelector("#setting-animations");
 const settingDecorations = document.querySelector("#setting-decorations");
 const settingLargeText = document.querySelector("#setting-large-text");
-
-const tilePositions = [
-  { x: 13.1, y: 85.4, rotate: 7 },
-  { x: 24.6, y: 86.6, rotate: -6 },
-  { x: 33, y: 73.2, rotate: -18 },
-  { x: 29.2, y: 56.3, rotate: -18 },
-  { x: 20.8, y: 42.2, rotate: -18 },
-  { x: 22.9, y: 23.8, rotate: -15 },
-  { x: 34, y: 17.2, rotate: -1 },
-  { x: 45.3, y: 21.6, rotate: 10 },
-  { x: 50.7, y: 37.8, rotate: 18 },
-  { x: 53.1, y: 57.4, rotate: 15 },
-  { x: 63.7, y: 57.9, rotate: -18 },
-  { x: 66.5, y: 38.7, rotate: -18 },
-  { x: 73, y: 22.6, rotate: -11 },
-  { x: 84.3, y: 18.9, rotate: 5 },
-  { x: 91.8, y: 32.7, rotate: 18 },
-  { x: 87.4, y: 50.7, rotate: 18 },
-  { x: 76.5, y: 57.9, rotate: 18 },
-  { x: 69.7, y: 72.8, rotate: 18 },
-  { x: 76.1, y: 87.1, rotate: 4 },
-  { x: 87.4, y: 84.5, rotate: -8 }
-];
-
-const startPosition = { x: 7.9, y: 80.7 };
-const tileColors = ["#f94144", "#f9c74f", "#43aa8b", "#4cc9f0", "#b565c0", "#f3722c"];
+const settingHighContrast = document.querySelector("#setting-high-contrast");
+const settingSpeech = document.querySelector("#setting-speech");
+const settingMuted = document.querySelector("#setting-muted");
+const fullscreenButton = document.querySelector("#fullscreen-button");
+const srStatus = document.querySelector("#sr-status");
+const victoryModal = document.querySelector("#victory-modal");
+const victoryCard = document.querySelector(".victory-card");
+const victorySummary = document.querySelector("#victory-summary");
+const skillSummary = document.querySelector("#skill-summary");
+const victoryRestartButton = document.querySelector("#victory-restart-button");
+const victoryCloseButton = document.querySelector("#victory-close-button");
 
 const state = {
   started: false,
@@ -223,6 +70,8 @@ const state = {
   previousPosition: 0,
   score: 0,
   answered: new Set(),
+  skillStats: {},
+  history: [],
   activeQuestionIndex: -1,
   waitingForContinue: false,
   theme: "light"
@@ -233,13 +82,17 @@ const defaultSettings = {
   sfx: true,
   animations: true,
   decorations: true,
-  largeText: false
+  largeText: false,
+  highContrast: false,
+  speech: false,
+  muted: false
 };
 
 const settings = { ...defaultSettings };
 let audioContext = null;
 let musicTimer = null;
 let musicStep = 0;
+let activeTrack = [];
 
 const diceFaces = [1, 2, 3, 4, 5, 6];
 const diceFaceClasses = diceFaces.map((face) => `show-${face}`);
@@ -247,6 +100,50 @@ const diceFaceClasses = diceFaces.map((face) => `show-${face}`);
 function setDiceFace(value) {
   diceCube.classList.remove(...diceFaceClasses);
   diceCube.classList.add(`show-${value}`);
+}
+
+function shuffleList(items) {
+  const result = [...items];
+
+  for (let index = result.length - 1; index > 0; index -= 1) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [result[index], result[randomIndex]] = [result[randomIndex], result[index]];
+  }
+
+  return result;
+}
+
+function createSkillStats() {
+  return skills.reduce((stats, skill) => {
+    stats[skill] = { right: 0, wrong: 0 };
+    return stats;
+  }, {});
+}
+
+function getSkillIcon(skill) {
+  return skillIconMap.get(skill) || skill.slice(0, 2).toUpperCase();
+}
+
+function getQuestionTypeLabel(question) {
+  return questionTypes[question.type] || "Múltipla escolha";
+}
+
+function announce(message) {
+  if (srStatus) {
+    srStatus.textContent = message;
+  }
+}
+
+function speak(message) {
+  if (!settings.speech || settings.muted || !("speechSynthesis" in window)) {
+    return;
+  }
+
+  window.speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(message);
+  utterance.lang = "pt-BR";
+  utterance.rate = 0.95;
+  window.speechSynthesis.speak(utterance);
 }
 
 function saveSettings() {
@@ -292,12 +189,25 @@ function updateSettingsUI() {
   if (settingLargeText) {
     settingLargeText.checked = settings.largeText;
   }
+
+  if (settingHighContrast) {
+    settingHighContrast.checked = settings.highContrast;
+  }
+
+  if (settingSpeech) {
+    settingSpeech.checked = settings.speech;
+  }
+
+  if (settingMuted) {
+    settingMuted.checked = settings.muted;
+  }
 }
 
 function applySettingsClasses() {
   document.body.classList.toggle("reduce-motion", !settings.animations);
   document.body.classList.toggle("simple-decor", !settings.decorations);
   document.body.classList.toggle("large-text", settings.largeText);
+  document.body.classList.toggle("high-contrast", settings.highContrast);
 }
 
 function ensureAudioContext() {
@@ -319,7 +229,7 @@ function ensureAudioContext() {
 }
 
 function playTone(frequency, duration = 0.12, type = "sine", volume = 0.035, force = false) {
-  if (!force && !settings.sfx) {
+  if (settings.muted || (!force && !settings.sfx)) {
     return;
   }
 
@@ -350,7 +260,7 @@ function playTone(frequency, duration = 0.12, type = "sine", volume = 0.035, for
 function startMusic() {
   stopMusic();
 
-  if (!settings.music) {
+  if (!settings.music || settings.muted) {
     return;
   }
 
@@ -374,8 +284,13 @@ function setSetting(key, value) {
   applySettingsClasses();
   updateSettingsUI();
 
-  if (key === "music") {
-    if (value) {
+  if (key === "muted" && value) {
+    stopMusic();
+    window.speechSynthesis?.cancel();
+  }
+
+  if (key === "music" || key === "muted") {
+    if (settings.music && !settings.muted) {
       ensureAudioContext();
       startMusic();
     } else {
@@ -397,14 +312,17 @@ function setTheme(theme, shouldSave = true) {
 }
 
 function buildOrderedQuestions() {
+  const bySkill = skills.map((skill) => (
+    shuffleList(questions.filter((question) => question.skill === skill)).slice(0, questionsPerSkill)
+  ));
+
   if (state.mode === "grouped") {
-    return questions;
+    return bySkill.flat();
   }
 
-  const bySkill = skills.map((skill) => questions.filter((question) => question.skill === skill));
   const ordered = [];
 
-  for (let round = 0; round < 2; round += 1) {
+  for (let round = 0; round < questionsPerSkill; round += 1) {
     bySkill.forEach((skillQuestions) => {
       if (skillQuestions[round]) {
         ordered.push(skillQuestions[round]);
@@ -415,8 +333,24 @@ function buildOrderedQuestions() {
   return ordered;
 }
 
+function resetTrack() {
+  activeTrack = buildOrderedQuestions();
+}
+
 function getTrack() {
-  return buildOrderedQuestions();
+  if (!activeTrack.length) {
+    resetTrack();
+  }
+
+  return activeTrack;
+}
+
+function recordSkillResult(question, isCorrect) {
+  if (!state.skillStats[question.skill]) {
+    state.skillStats[question.skill] = { right: 0, wrong: 0 };
+  }
+
+  state.skillStats[question.skill][isCorrect ? "right" : "wrong"] += 1;
 }
 
 function renderBoard() {
@@ -426,17 +360,28 @@ function renderBoard() {
   track.forEach((question, index) => {
     const position = tilePositions[index];
     const tile = document.createElement("li");
+    const icon = document.createElement("span");
     const number = document.createElement("span");
     const skill = document.createElement("strong");
     const questionLabel = document.createElement("span");
 
+    if (!position) {
+      return;
+    }
+
     tile.className = "tile";
+    tile.dataset.skill = question.skill;
     tile.style.left = `${position.x}%`;
     tile.style.top = `${position.y}%`;
     tile.style.setProperty("--tile-rotate", `${position.rotate}deg`);
     tile.style.setProperty("--tile-color", tileColors[index % tileColors.length]);
     tile.classList.toggle("is-current", state.position === index + 1);
     tile.classList.toggle("is-complete", state.answered.has(index));
+    tile.classList.toggle("is-completed", state.answered.has(index));
+    tile.setAttribute("aria-label", `Casa ${index + 1}. ${question.skill}. ${getQuestionTypeLabel(question)}.`);
+
+    icon.className = "tile-icon";
+    icon.textContent = getSkillIcon(question.skill);
 
     number.className = "tile-number";
     number.textContent = String(index + 1);
@@ -445,9 +390,9 @@ function renderBoard() {
     skill.textContent = question.skill;
 
     questionLabel.className = "tile-question";
-    questionLabel.textContent = `Questão ${(index % 2) + 1}`;
+    questionLabel.textContent = getQuestionTypeLabel(question);
 
-    tile.append(number, skill, questionLabel);
+    tile.append(icon, number, skill, questionLabel);
 
     board.appendChild(tile);
   });
@@ -478,6 +423,9 @@ function updateScore() {
   positionLabel.textContent = `Casa ${state.position} de ${total}`;
   scoreLabel.textContent = `${state.score} acerto${state.score === 1 ? "" : "s"}`;
   progressFill.style.width = `${progressPercent}%`;
+  scoreLabel.classList.remove("score-pop");
+  void scoreLabel.offsetWidth;
+  scoreLabel.classList.add("score-pop");
 }
 
 function renderAll() {
@@ -496,6 +444,7 @@ function renderAll() {
 
 function setStatus(title, text) {
   console.info(`${title}: ${text}`);
+  announce(`${title}. ${text}`);
 }
 
 function rollDice() {
@@ -527,6 +476,14 @@ function rollDice() {
 
     state.previousPosition = state.position;
     state.position = Math.min(state.position + roll, track.length);
+    state.history.push({
+      type: "roll",
+      roll,
+      from: state.previousPosition,
+      to: state.position,
+      time: new Date().toISOString()
+    });
+    announce(`Dado caiu em ${roll}. Caravana avançou para a casa ${state.position}.`);
 
     renderAll();
     animateCaravan();
@@ -553,6 +510,7 @@ function openQuestion(index) {
   rollButton.disabled = true;
   questionSkill.textContent = question.skill;
   questionNumber.textContent = `Casa ${index + 1}`;
+  questionType.textContent = getQuestionTypeLabel(question);
   questionTitle.textContent = question.prompt;
   feedbackText.textContent = "";
   continueButton.hidden = true;
@@ -563,17 +521,24 @@ function openQuestion(index) {
     button.type = "button";
     button.className = "option-button";
     button.textContent = `${String.fromCharCode(65 + optionIndex)}) ${option}`;
+    button.setAttribute("aria-label", `Alternativa ${String.fromCharCode(65 + optionIndex)}: ${option}`);
     button.addEventListener("click", () => answerQuestion(optionIndex));
     optionsList.appendChild(button);
   });
 
   modal.hidden = false;
+  modal.querySelector(".question-card")?.focus();
+  speak(`${question.skill}. ${getQuestionTypeLabel(question)}. ${question.prompt}. ${question.options.join(". ")}`);
+  announce(`Pergunta aberta. ${question.skill}. ${getQuestionTypeLabel(question)}.`);
 }
 
 function answerQuestion(selectedIndex) {
   const question = getTrack()[state.activeQuestionIndex];
   const isCorrect = selectedIndex === question.answer;
   const optionButtons = [...optionsList.querySelectorAll(".option-button")];
+  const currentHouse = state.position;
+
+  recordSkillResult(question, isCorrect);
 
   optionButtons.forEach((button, index) => {
     button.disabled = true;
@@ -598,8 +563,20 @@ function answerQuestion(selectedIndex) {
     setStatus("Voltou uma jogada", `Você retornou para a casa ${state.position}. Jogue de novo para tentar avançar.`);
   }
 
+  state.history.push({
+    type: "answer",
+    house: currentHouse,
+    skill: question.skill,
+    questionType: question.type,
+    correct: isCorrect,
+    selectedIndex,
+    time: new Date().toISOString()
+  });
+
   continueButton.hidden = false;
   renderAll();
+  speak(feedbackText.textContent);
+  continueButton.focus();
 }
 
 function closeQuestion() {
@@ -610,12 +587,42 @@ function closeQuestion() {
 
   if (state.position >= getTrack().length && state.answered.has(getTrack().length - 1)) {
     finishGame();
+  } else {
+    rollButton.focus();
   }
+}
+
+function showVictory() {
+  const total = getTrack().length;
+  const accuracy = total ? Math.round((state.score / total) * 100) : 0;
+  victorySummary.textContent = `A caravana chegou ao final com ${state.score} de ${total} acertos (${accuracy}%).`;
+  skillSummary.innerHTML = "";
+
+  skills.forEach((skill) => {
+    const stat = state.skillStats[skill] || { right: 0, wrong: 0 };
+    const item = document.createElement("div");
+    item.className = "skill-summary__item";
+    item.innerHTML = `
+      <span>${getSkillIcon(skill)}</span>
+      <strong>${skill}</strong>
+      <em>${stat.right} acerto${stat.right === 1 ? "" : "s"} / ${stat.wrong} erro${stat.wrong === 1 ? "" : "s"}</em>
+    `;
+    skillSummary.appendChild(item);
+  });
+
+  victoryModal.hidden = false;
+  victoryCard.focus();
+  speak(`Chegada alcançada. Resultado final: ${state.score} de ${total} acertos.`);
+}
+
+function hideVictory() {
+  victoryModal.hidden = true;
 }
 
 function finishGame() {
   setStatus("Fim da trilha", `Você chegou ao final com ${state.score} acerto${state.score === 1 ? "" : "s"}.`);
   rollButton.disabled = true;
+  showVictory();
 }
 
 function toggleMode() {
@@ -624,10 +631,13 @@ function toggleMode() {
 }
 
 function restartGame() {
+  resetTrack();
   state.position = 0;
   state.previousPosition = 0;
   state.score = 0;
   state.answered = new Set();
+  state.skillStats = createSkillStats();
+  state.history = [];
   state.activeQuestionIndex = -1;
   state.waitingForContinue = false;
   diceValue.textContent = "-";
@@ -635,12 +645,24 @@ function restartGame() {
   diceCube.classList.remove("is-rolling");
   rollButton.disabled = !state.started;
   modal.hidden = true;
+  hideVictory();
   setStatus("Pronto para começar", "Jogue o dado. Ao cair em uma casa, a pergunta daquela habilidade aparece automaticamente.");
   renderAll();
 }
 
 function toggleTheme() {
   setTheme(state.theme === "dark" ? "light" : "dark");
+}
+
+function toggleFullscreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen?.();
+    announce("Tela cheia ativada.");
+    return;
+  }
+
+  document.exitFullscreen?.();
+  announce("Tela cheia desativada.");
 }
 
 function loadTheme() {
@@ -656,6 +678,9 @@ function loadTheme() {
 
 function startGame() {
   state.started = true;
+  if (!activeTrack.length) {
+    resetTrack();
+  }
   startScreen.hidden = true;
   settingsPanel.hidden = true;
   settingsToggle.setAttribute("aria-expanded", "false");
@@ -667,6 +692,8 @@ function startGame() {
     ensureAudioContext();
     startMusic();
   }
+
+  rollButton.focus();
 }
 
 function toggleSettingsPanel() {
@@ -675,10 +702,69 @@ function toggleSettingsPanel() {
   settingsToggle.setAttribute("aria-expanded", String(isOpen));
 }
 
+function handleKeyboardShortcuts(event) {
+  const tagName = document.activeElement?.tagName;
+  const isTyping = ["INPUT", "TEXTAREA", "SELECT"].includes(tagName);
+
+  if (event.altKey || event.ctrlKey || event.metaKey || isTyping) {
+    return;
+  }
+
+  if (!modal.hidden && /^[1-4]$/.test(event.key)) {
+    const option = optionsList.querySelectorAll(".option-button")[Number(event.key) - 1];
+    option?.click();
+    event.preventDefault();
+    return;
+  }
+
+  if (event.key === "Escape") {
+    if (!settingsPanel.hidden) {
+      toggleSettingsPanel();
+      settingsToggle.focus();
+      event.preventDefault();
+      return;
+    }
+
+    if (!victoryModal.hidden) {
+      hideVictory();
+      restartButton.focus();
+      event.preventDefault();
+      return;
+    }
+  }
+
+  if (!state.started) {
+    if (event.key === "Enter" || event.key === " ") {
+      startGame();
+      event.preventDefault();
+    }
+    return;
+  }
+
+  const key = event.key.toLowerCase();
+  if ((event.key === " " || key === "d") && !rollButton.disabled) {
+    rollDice();
+    event.preventDefault();
+  } else if (key === "r") {
+    restartGame();
+    event.preventDefault();
+  } else if (key === "t") {
+    toggleTheme();
+    event.preventDefault();
+  } else if (key === "f") {
+    toggleFullscreen();
+    event.preventDefault();
+  } else if (key === "m") {
+    setSetting("muted", !settings.muted);
+    event.preventDefault();
+  }
+}
+
 rollButton.addEventListener("click", rollDice);
 orderButton.addEventListener("click", toggleMode);
 restartButton.addEventListener("click", restartGame);
 themeButton.addEventListener("click", toggleTheme);
+fullscreenButton.addEventListener("click", toggleFullscreen);
 continueButton.addEventListener("click", closeQuestion);
 startButton.addEventListener("click", startGame);
 settingsToggle.addEventListener("click", toggleSettingsPanel);
@@ -688,7 +774,15 @@ settingSfx.addEventListener("change", () => setSetting("sfx", settingSfx.checked
 settingAnimations.addEventListener("change", () => setSetting("animations", settingAnimations.checked));
 settingDecorations.addEventListener("change", () => setSetting("decorations", settingDecorations.checked));
 settingLargeText.addEventListener("change", () => setSetting("largeText", settingLargeText.checked));
+settingHighContrast.addEventListener("change", () => setSetting("highContrast", settingHighContrast.checked));
+settingSpeech.addEventListener("change", () => setSetting("speech", settingSpeech.checked));
+settingMuted.addEventListener("change", () => setSetting("muted", settingMuted.checked));
+victoryRestartButton.addEventListener("click", restartGame);
+victoryCloseButton.addEventListener("click", hideVictory);
+document.addEventListener("keydown", handleKeyboardShortcuts);
 
 loadTheme();
 loadSettings();
+resetTrack();
+state.skillStats = createSkillStats();
 renderAll();

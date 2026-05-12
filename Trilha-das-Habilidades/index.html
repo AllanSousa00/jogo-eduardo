@@ -63,6 +63,30 @@
           <span aria-hidden="true"></span>
         </span>
       </label>
+
+      <label class="setting-row">
+        <span>Alto contraste</span>
+        <span class="setting-switch">
+          <input id="setting-high-contrast" type="checkbox">
+          <span aria-hidden="true"></span>
+        </span>
+      </label>
+
+      <label class="setting-row">
+        <span>Narrar perguntas</span>
+        <span class="setting-switch">
+          <input id="setting-speech" type="checkbox">
+          <span aria-hidden="true"></span>
+        </span>
+      </label>
+
+      <label class="setting-row">
+        <span>Silenciar tudo</span>
+        <span class="setting-switch">
+          <input id="setting-muted" type="checkbox">
+          <span aria-hidden="true"></span>
+        </span>
+      </label>
     </aside>
 
     <div class="start-world" aria-hidden="true">
@@ -180,6 +204,7 @@
         <span class="theme-icon" aria-hidden="true"></span>
         <span id="theme-label">Tema dark</span>
       </button>
+      <button id="fullscreen-button" class="secondary-button fullscreen-button" type="button">Tela cheia</button>
     </section>
 
     <section class="board-wrap" aria-label="Tabuleiro">
@@ -268,11 +293,14 @@
 
   </main>
 
+  <div id="sr-status" class="sr-only" aria-live="polite"></div>
+
   <div id="question-modal" class="modal-backdrop" hidden>
-    <section class="question-card" role="dialog" aria-modal="true" aria-labelledby="question-title">
+    <section class="question-card" role="dialog" aria-modal="true" aria-labelledby="question-title" aria-describedby="feedback-text" tabindex="-1">
       <div class="question-meta">
         <span id="question-skill">Habilidade</span>
         <strong id="question-number">Questão</strong>
+        <span id="question-type">Tipo</span>
       </div>
 
       <h2 id="question-title"></h2>
@@ -286,6 +314,20 @@
     </section>
   </div>
 
+  <div id="victory-modal" class="modal-backdrop" hidden>
+    <section class="victory-card" role="dialog" aria-modal="true" aria-labelledby="victory-title" tabindex="-1">
+      <p class="eyebrow">Fim da trilha</p>
+      <h2 id="victory-title">Chegada alcançada</h2>
+      <p id="victory-summary"></p>
+      <div id="skill-summary" class="skill-summary" aria-label="Resumo por habilidade"></div>
+      <div class="modal-actions">
+        <button id="victory-restart-button" class="primary-button" type="button">Jogar novamente</button>
+        <button id="victory-close-button" class="secondary-button" type="button">Fechar</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="./data.js"></script>
   <script src="./script.js"></script>
 </body>
 </html>

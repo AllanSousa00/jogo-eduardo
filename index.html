@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#102a43">
+  <title>Plataforma de Língua Portuguesa</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --ink: #102a43;
+      --muted: #587083;
+      --paper: #fbfff6;
+      --blue: #22577a;
+      --sky: #9adce8;
+      --green: #5caa55;
+      --gold: #ffd166;
+      --shadow: 0 22px 55px rgba(16, 42, 67, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255, 209, 102, 0.26), transparent 18%),
+        radial-gradient(circle at 84% 12%, rgba(154, 220, 232, 0.45), transparent 18%),
+        linear-gradient(180deg, #dff6fb 0 34%, #8bbd62 34% 35%, #c9ed44 35% 100%);
+    }
+
+    main {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 42px 0;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 28px;
+      align-items: center;
+      min-height: calc(100vh - 84px);
+    }
+
+    .copy {
+      padding: 26px 0;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: #218bad;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.6rem, 7vw, 5.7rem);
+      line-height: 0.95;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 58ch;
+      margin: 20px 0 0;
+      color: #314d5f;
+      font-size: clamp(1.05rem, 2vw, 1.32rem);
+      line-height: 1.55;
+      font-weight: 700;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0 20px;
+      border-radius: 16px;
+      color: #fff;
+      background: #22577a;
+      box-shadow: 0 8px 0 #123a54, 0 18px 28px rgba(16, 42, 67, 0.2);
+      font-weight: 900;
+      text-decoration: none;
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      filter: brightness(1.07);
+    }
+
+    .button.secondary {
+      color: #102a43;
+      background: #ffd166;
+      box-shadow: 0 8px 0 #b7841f, 0 18px 28px rgba(16, 42, 67, 0.18);
+    }
+
+    .showcase {
+      position: relative;
+      min-height: 580px;
+      border: 3px solid rgba(255, 255, 255, 0.86);
+      border-radius: 28px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 70% 20%, #ffd166 0 6%, rgba(255, 209, 102, 0.28) 6% 10%, transparent 10%),
+        linear-gradient(180deg, #9bdce8 0 34%, #79b053 34% 100%);
+      box-shadow: var(--shadow);
+    }
+
+    .road {
+      position: absolute;
+      inset: 18% 4% 9%;
+      border: 34px solid #fff8e8;
+      border-radius: 50% 46% 55% 42%;
+      transform: rotate(-10deg);
+      box-shadow:
+        0 0 0 9px #21723e,
+        0 24px 26px rgba(16, 42, 67, 0.18);
+    }
+
+    .road::after {
+      content: "";
+      position: absolute;
+      inset: 18% 15%;
+      border: 10px dashed rgba(16, 42, 67, 0.18);
+      border-radius: 50%;
+    }
+
+    .tile {
+      position: absolute;
+      width: 100px;
+      min-height: 68px;
+      display: grid;
+      place-items: center;
+      border: 4px solid #fff8e8;
+      border-radius: 16px;
+      color: #102a43;
+      font-weight: 950;
+      box-shadow: 0 14px 18px rgba(16, 42, 67, 0.18);
+      transform: rotate(var(--r));
+    }
+
+    .tile:nth-child(2) { left: 9%; top: 69%; background: #ef476f; --r: -12deg; }
+    .tile:nth-child(3) { left: 23%; top: 35%; background: #ffd166; --r: 10deg; }
+    .tile:nth-child(4) { right: 15%; top: 25%; background: #43aa8b; --r: -9deg; }
+    .tile:nth-child(5) { right: 11%; bottom: 17%; background: #4cc9f0; --r: 12deg; }
+
+    .bus {
+      position: absolute;
+      left: 13%;
+      bottom: 18%;
+      width: 128px;
+      height: 72px;
+      border: 5px solid #102a43;
+      border-radius: 18px 20px 14px 14px;
+      background: linear-gradient(180deg, #ffd166 0 48%, #35a8e0 48% 100%);
+      box-shadow: 0 15px 0 rgba(16, 42, 67, 0.12);
+      animation: bus-idle 2.2s ease-in-out infinite;
+    }
+
+    .bus::before,
+    .bus::after {
+      content: "";
+      position: absolute;
+      bottom: -15px;
+      width: 24px;
+      height: 24px;
+      border: 5px solid #102a43;
+      border-radius: 50%;
+      background: #fff;
+    }
+
+    .bus::before { left: 18px; }
+    .bus::after { right: 18px; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .card {
+      min-height: 140px;
+      padding: 20px;
+      border: 2px solid rgba(34, 87, 122, 0.16);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.74);
+      box-shadow: 0 14px 30px rgba(16, 42, 67, 0.1);
+    }
+
+    .card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.08rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    @keyframes bus-idle {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        color: #f2fbff;
+        background:
+          radial-gradient(circle at 18% 18%, rgba(255, 209, 102, 0.12), transparent 18%),
+          radial-gradient(circle at 84% 12%, rgba(104, 212, 255, 0.18), transparent 18%),
+          linear-gradient(180deg, #051827 0 36%, #123c31 36% 100%);
+      }
+
+      .lead,
+      .card p {
+        color: #cfe9f5;
+      }
+
+      .card {
+        background: rgba(8, 29, 45, 0.78);
+        border-color: rgba(144, 221, 255, 0.2);
+      }
+    }
+
+    @media (max-width: 860px) {
+      .hero,
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .showcase {
+        min-height: 430px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero" aria-labelledby="title">
+      <div class="copy">
+        <p class="eyebrow">Plataforma escolar</p>
+        <h1 id="title">Língua Portuguesa em jogo</h1>
+        <p class="lead">
+          Dois projetos prontos para revisar conteúdo: um quiz direto e uma trilha com dado, caravana, perguntas por habilidade e recursos de acessibilidade.
+        </p>
+        <div class="actions">
+          <a class="button" href="./Trilha-das-Habilidades/index.html">Abrir Trilha</a>
+          <a class="button secondary" href="./Quiz-Portugues/index.html">Abrir Quiz</a>
+          <a class="button secondary" href="./docs/media/demonstracao-trilha-das-habilidades.mp4">Ver demonstração</a>
+        </div>
+        <div class="cards" aria-label="Resumo dos projetos">
+          <article class="card">
+            <strong>🎲 Trilha</strong>
+            <p>Jogo de caminho com dado 3D, caravana estudantil e resumo por habilidade.</p>
+          </article>
+          <article class="card">
+            <strong>📚 Quiz</strong>
+            <p>Atividade rápida com feedback, revisão dos erros e modo professor.</p>
+          </article>
+          <article class="card">
+            <strong>♿ Acessível</strong>
+            <p>Tema escuro, alto contraste, tela cheia, teclado e ajustes de leitura.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="showcase" aria-hidden="true">
+        <div class="road"></div>
+        <span class="tile">Leitura</span>
+        <span class="tile">Ortografia</span>
+        <span class="tile">Coesão</span>
+        <span class="tile">Final</span>
+        <span class="bus"></span>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
