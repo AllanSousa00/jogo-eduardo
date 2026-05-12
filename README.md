@@ -1,10 +1,15 @@
-# Plataforma de Língua Portuguesa
+# Jogos de Língua Portuguesa
 
 ![Prévia da Trilha das Habilidades](docs/media/trilha-preview.png)
 
-Repositório com duas atividades prontas para sala de aula: um quiz de Português e um jogo de trilha com caravana estudantil. Tudo roda direto no navegador, sem servidor, sem banco de dados e sem instalação.
+Repositório com dois jogos independentes de Língua Portuguesa. Eles ficam no mesmo repositório apenas para facilitar a entrega, mas cada jogo abre em sua própria pasta e funciona separado do outro.
 
 🌐 **Link online:** [allansousa00.github.io/jogo-eduardo](https://allansousa00.github.io/jogo-eduardo/)
+
+Links diretos:
+
+- [Trilha das Habilidades](https://allansousa00.github.io/jogo-eduardo/Trilha-das-Habilidades/)
+- [Quiz Português](https://allansousa00.github.io/jogo-eduardo/Quiz-Portugues/)
 
 🎬 **Demonstração:** [vídeo da Trilha das Habilidades](docs/media/demonstracao-trilha-das-habilidades.mp4)
 
