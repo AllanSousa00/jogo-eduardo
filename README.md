@@ -1,22 +1,22 @@
-# Português Interativo
+# Plataforma de Língua Portuguesa
 
-Este repositório reúne duas atividades de Língua Portuguesa feitas para rodar direto no navegador:
+Este repositório reúne duas atividades de Língua Portuguesa para uso escolar, revisão de conteúdo e prática em sala:
 
-- **Quiz Português**, um quiz mais tradicional, com perguntas, alternativas, revisão e modo professor.
+- **Quiz Português**, uma atividade de perguntas objetivas com feedback, revisão e modo professor.
 - **Trilha das Habilidades**, um jogo de caminho com caravana estudantil, dado 3D e perguntas por casa.
 
-A ideia é simples: abrir o arquivo HTML e usar. Não precisa instalar dependências, criar servidor ou configurar banco de dados.
+Tudo roda direto no navegador. Não precisa instalar dependências, criar servidor ou configurar banco de dados.
 
 ## Estrutura
 
 ```text
-Portugues-Interativo/
-├── Aplicativo/
+Plataforma-Lingua-Portuguesa/
+├── Quiz-Portugues/
 │   ├── index.html
 │   ├── style.css
 │   ├── script.js
 │   └── README.md
-├── Jogo-Caminho/
+├── Trilha-das-Habilidades/
 │   ├── index.html
 │   ├── style.css
 │   ├── script.js
@@ -32,7 +32,7 @@ Portugues-Interativo/
 Abra:
 
 ```text
-Aplicativo/index.html
+Quiz-Portugues/index.html
 ```
 
 ### Trilha das Habilidades
@@ -40,7 +40,7 @@ Aplicativo/index.html
 Abra:
 
 ```text
-Jogo-Caminho/index.html
+Trilha-das-Habilidades/index.html
 ```
 
 ## O que cada projeto faz
@@ -52,7 +52,7 @@ O quiz trabalha perguntas de múltipla escolha. Ele mostra feedback depois da re
 Documentação própria:
 
 ```text
-Aplicativo/README.md
+Quiz-Portugues/README.md
 ```
 
 ### Trilha das Habilidades
@@ -62,7 +62,7 @@ A trilha funciona como um jogo de tabuleiro. O aluno joga o dado, a caravana and
 Documentação própria:
 
 ```text
-Jogo-Caminho/README.md
+Trilha-das-Habilidades/README.md
 ```
 
 ## Tecnologias
@@ -92,4 +92,4 @@ git push
 
 ## Observação
 
-Os dois projetos foram pensados para uso escolar. O professor pode abrir em um computador, projetar em sala ou deixar os alunos jogarem individualmente.
+Os dois módulos foram pensados para uso escolar. O professor pode abrir em um computador, projetar em sala ou deixar os alunos jogarem individualmente.
