@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#22577a">
+  <title>Trilha das Habilidades</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body data-theme="light">
+  <section id="start-screen" class="start-screen" aria-labelledby="start-title">
+    <button id="settings-toggle" class="settings-toggle" type="button" aria-label="Abrir configurações" aria-expanded="false" aria-controls="settings-panel">
+      <span class="settings-gear" aria-hidden="true"></span>
+    </button>
+
+    <aside id="settings-panel" class="settings-panel" aria-label="Configurações" hidden>
+      <h2>Configurações</h2>
+
+      <label class="setting-row">
+        <span>Tema escuro</span>
+        <span class="setting-switch">
+          <input id="setting-theme" type="checkbox">
+          <span aria-hidden="true"></span>
+        </span>
+      </label>
+
+      <label class="setting-row">
+        <span>Música</span>
+        <span class="setting-switch">
+          <input id="setting-music" type="checkbox">
+          <span aria-hidden="true"></span>
+        </span>
+      </label>
+
+      <label class="setting-row">
+        <span>Sons</span>
+        <span class="setting-switch">
+          <input id="setting-sfx" type="checkbox">
+          <span aria-hidden="true"></span>
+        </span>
+      </label>
+
+      <label class="setting-row">
+        <span>Animações</span>
+        <span class="setting-switch">
+          <input id="setting-animations" type="checkbox">
+          <span aria-hidden="true"></span>
+        </span>
+      </label>
+
+      <label class="setting-row">
+        <span>Decorações</span>
+        <span class="setting-switch">
+          <input id="setting-decorations" type="checkbox">
+          <span aria-hidden="true"></span>
+        </span>
+      </label>
+
+      <label class="setting-row">
+        <span>Texto maior</span>
+        <span class="setting-switch">
+          <input id="setting-large-text" type="checkbox">
+          <span aria-hidden="true"></span>
+        </span>
+      </label>
+    </aside>
+
+    <div class="start-world" aria-hidden="true">
+      <span class="start-sun"></span>
+      <span class="start-moon"></span>
+      <span class="start-cloud start-cloud--one"></span>
+      <span class="start-cloud start-cloud--two"></span>
+      <span class="start-star start-star--one"></span>
+      <span class="start-star start-star--two"></span>
+      <span class="start-star start-star--three"></span>
+      <span class="start-hill start-hill--one"></span>
+      <span class="start-hill start-hill--two"></span>
+    </div>
+
+    <div class="start-card">
+      <div class="start-card__scene" aria-hidden="true">
+        <span class="start-mini-school"><span>ESCOLA</span></span>
+        <span class="start-lake"></span>
+        <span class="start-tree start-tree--one"></span>
+        <span class="start-tree start-tree--two"></span>
+        <span class="start-lamp-scene start-lamp-scene--one"></span>
+        <span class="start-lamp-scene start-lamp-scene--two"></span>
+        <span class="start-scene-sign">Partida</span>
+        <span class="start-scene-book"></span>
+        <span class="start-scene-pencil"></span>
+        <span class="start-road"></span>
+        <span class="start-bus"></span>
+        <span class="start-tile start-tile--one">1</span>
+        <span class="start-tile start-tile--two">2</span>
+        <span class="start-tile start-tile--three">3</span>
+      </div>
+      <p class="eyebrow">Jogo de caminho</p>
+      <h1 id="start-title">Trilha das Habilidades</h1>
+      <p class="start-subtitle">Caravana estudantil de Português</p>
+      <div class="start-skill-cloud" aria-hidden="true">
+        <span>Leitura</span>
+        <span>Ortografia</span>
+        <span>Pontuação</span>
+        <span>Coesão</span>
+      </div>
+      <div class="start-action-row">
+        <span class="start-dice-preview" aria-hidden="true"></span>
+        <button id="start-button" class="start-button" type="button">Iniciar jogo</button>
+      </div>
+    </div>
+  </section>
+
+  <main class="app">
+    <section class="top-panel" aria-labelledby="game-title">
+      <div>
+        <p class="eyebrow">Jogo de caminho</p>
+        <h1 id="game-title">Trilha das Habilidades</h1>
+      </div>
+
+      <div class="score-panel" aria-live="polite">
+        <span id="position-label">Casa 0 de 20</span>
+        <strong id="score-label">0 acertos</strong>
+        <span class="progress-track" aria-hidden="true">
+          <span id="progress-fill"></span>
+        </span>
+      </div>
+    </section>
+
+    <section class="controls" aria-label="Controles do jogo">
+      <p class="controls-title">Controle da caravana</p>
+      <button id="roll-button" class="dice-button" type="button" aria-label="Jogar o dado" disabled>
+        <span class="dice-stage" aria-hidden="true">
+          <span id="dice-cube" class="dice-cube show-1">
+            <span class="dice-face dice-face--1">
+              <span class="pip pip--center"></span>
+            </span>
+            <span class="dice-face dice-face--2">
+              <span class="pip pip--top-left"></span>
+              <span class="pip pip--bottom-right"></span>
+            </span>
+            <span class="dice-face dice-face--3">
+              <span class="pip pip--top-left"></span>
+              <span class="pip pip--center"></span>
+              <span class="pip pip--bottom-right"></span>
+            </span>
+            <span class="dice-face dice-face--4">
+              <span class="pip pip--top-left"></span>
+              <span class="pip pip--top-right"></span>
+              <span class="pip pip--bottom-left"></span>
+              <span class="pip pip--bottom-right"></span>
+            </span>
+            <span class="dice-face dice-face--5">
+              <span class="pip pip--top-left"></span>
+              <span class="pip pip--top-right"></span>
+              <span class="pip pip--center"></span>
+              <span class="pip pip--bottom-left"></span>
+              <span class="pip pip--bottom-right"></span>
+            </span>
+            <span class="dice-face dice-face--6">
+              <span class="pip pip--top-left"></span>
+              <span class="pip pip--middle-left"></span>
+              <span class="pip pip--bottom-left"></span>
+              <span class="pip pip--top-right"></span>
+              <span class="pip pip--middle-right"></span>
+              <span class="pip pip--bottom-right"></span>
+            </span>
+          </span>
+        </span>
+        <span class="dice-button__text">Jogar dado</span>
+      </button>
+
+      <div class="dice-box" aria-live="polite">
+        <span>Resultado</span>
+        <strong id="dice-value">-</strong>
+      </div>
+
+      <button id="order-button" class="secondary-button" type="button">Modo alternado</button>
+      <button id="restart-button" class="secondary-button" type="button">Reiniciar</button>
+      <button id="theme-button" class="secondary-button theme-button" type="button" aria-pressed="false">
+        <span class="theme-icon" aria-hidden="true"></span>
+        <span id="theme-label">Tema dark</span>
+      </button>
+    </section>
+
+    <section class="board-wrap" aria-label="Tabuleiro">
+      <div class="board-scene">
+        <div class="sun" aria-hidden="true"></div>
+        <div class="moon" aria-hidden="true"></div>
+        <div class="stars" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="cloud cloud--one" aria-hidden="true"></div>
+        <div class="cloud cloud--two" aria-hidden="true"></div>
+        <div class="day-layer" aria-hidden="true">
+          <span class="paper-plane paper-plane--one"></span>
+          <span class="paper-plane paper-plane--two"></span>
+          <span class="sun-ray sun-ray--one"></span>
+          <span class="sun-ray sun-ray--two"></span>
+          <span class="chalk-mark chalk-mark--one"></span>
+          <span class="chalk-mark chalk-mark--two"></span>
+          <span class="field-flags"></span>
+          <span class="ruler"></span>
+          <span class="color-pencil color-pencil--one"></span>
+          <span class="color-pencil color-pencil--two"></span>
+          <span class="day-note">Bons estudos</span>
+        </div>
+        <div class="night-layer" aria-hidden="true">
+          <span class="constellation constellation--one"></span>
+          <span class="constellation constellation--two"></span>
+          <span class="lamp lamp--one"></span>
+          <span class="lamp lamp--two"></span>
+          <span class="lamp lamp--three"></span>
+          <span class="night-glow night-glow--one"></span>
+          <span class="night-glow night-glow--two"></span>
+          <span class="moon-beam moon-beam--one"></span>
+          <span class="moon-beam moon-beam--two"></span>
+          <span class="reflector reflector--one"></span>
+          <span class="reflector reflector--two"></span>
+          <span class="reflector reflector--three"></span>
+          <span class="night-note">Rota iluminada</span>
+        </div>
+        <div class="hill-detail hill-detail--one" aria-hidden="true"></div>
+        <div class="hill-detail hill-detail--two" aria-hidden="true"></div>
+        <div class="school" aria-hidden="true">
+          <span class="school-roof"></span>
+          <span class="school-body"><span class="school-label">ESCOLA</span></span>
+        </div>
+        <div class="study-sign study-sign--start" aria-hidden="true"><span class="sign-label">Partida</span></div>
+        <div class="study-sign study-sign--finish" aria-hidden="true"><span class="sign-label">Chegada</span></div>
+        <div class="book book--one" aria-hidden="true"></div>
+        <div class="book book--two" aria-hidden="true"></div>
+        <div class="pencil" aria-hidden="true"></div>
+        <div class="compass" aria-hidden="true"></div>
+        <div class="notebook-lines" aria-hidden="true"></div>
+        <div class="lake" aria-hidden="true"></div>
+        <div class="tree tree--one" aria-hidden="true"></div>
+        <div class="tree tree--two" aria-hidden="true"></div>
+        <div class="finish-target" aria-hidden="true">
+          <span></span>
+        </div>
+
+        <svg class="route" viewBox="0 0 1200 700" aria-hidden="true" preserveAspectRatio="none">
+          <path class="route-shadow" d="M95 565 C220 650 360 620 398 508 C438 390 242 374 238 250 C235 126 430 84 548 154 C675 229 538 410 702 427 C838 441 735 244 876 158 C1004 80 1152 164 1085 306 C1024 437 862 353 838 498 C813 654 1031 630 1110 552"></path>
+          <path class="route-base" d="M95 565 C220 650 360 620 398 508 C438 390 242 374 238 250 C235 126 430 84 548 154 C675 229 538 410 702 427 C838 441 735 244 876 158 C1004 80 1152 164 1085 306 C1024 437 862 353 838 498 C813 654 1031 630 1110 552"></path>
+          <path class="route-stitches" d="M95 565 C220 650 360 620 398 508 C438 390 242 374 238 250 C235 126 430 84 548 154 C675 229 538 410 702 427 C838 441 735 244 876 158 C1004 80 1152 164 1085 306 C1024 437 862 353 838 498 C813 654 1031 630 1110 552"></path>
+        </svg>
+
+        <div id="caravan" class="caravan" aria-hidden="true">
+          <span class="bus-shadow"></span>
+          <div class="bus-body">
+            <span class="bus-roof-rack"></span>
+            <span class="bus-stripe"></span>
+            <span class="bus-window"></span>
+            <span class="bus-window"></span>
+            <span class="bus-window bus-window--small"></span>
+            <span class="bus-door"></span>
+            <span class="bus-light"></span>
+            <span class="bus-tail-light"></span>
+            <span class="bus-bumper"></span>
+          </div>
+          <span class="wheel wheel--front"></span>
+          <span class="wheel wheel--back"></span>
+        </div>
+
+        <ol id="board" class="board"></ol>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="question-modal" class="modal-backdrop" hidden>
+    <section class="question-card" role="dialog" aria-modal="true" aria-labelledby="question-title">
+      <div class="question-meta">
+        <span id="question-skill">Habilidade</span>
+        <strong id="question-number">Questão</strong>
+      </div>
+
+      <h2 id="question-title"></h2>
+      <div id="options-list" class="options-list"></div>
+
+      <p id="feedback-text" class="feedback-text" aria-live="polite"></p>
+
+      <div class="modal-actions">
+        <button id="continue-button" class="primary-button" type="button" hidden>Continuar</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
