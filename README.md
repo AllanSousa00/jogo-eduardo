@@ -1,15 +1,12 @@
-# Projetos de Língua Portuguesa
+# Atividades de Língua Portuguesa
 
-Este repositório contém **dois projetos independentes**. Não há uma tela inicial para escolher entre
-eles: cada atividade é aberta diretamente pelo seu próprio `index.html`, com seus próprios arquivos,
-estilos e regras.
+Este repositório contém dois jogos web independentes. O código-fonte fica organizado em `apps/`;
+as URLs públicas históricas permanecem iguais para não quebrar acessos já distribuídos.
 
-| Projeto                | Pasta                                                | Link publicado                                                                      |
-| ---------------------- | ---------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| Quiz Português         | [`Quiz-Portugues/`](Quiz-Portugues/)                 | [Abrir Quiz](https://allansousa00.github.io/jogo-eduardo/Quiz-Portugues/)           |
-| Trilha das Habilidades | [`Trilha-das-Habilidades/`](Trilha-das-Habilidades/) | [Abrir Trilha](https://allansousa00.github.io/jogo-eduardo/Trilha-das-Habilidades/) |
-
-![Prévia da Trilha das Habilidades](docs/media/trilha-preview.png)
+| Aplicativo             | Código-fonte                                                   | Link publicado                                                                      |
+| ---------------------- | -------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| Quiz Português         | [`apps/quiz-portugues/`](apps/quiz-portugues/)                 | [Abrir Quiz](https://allansousa00.github.io/jogo-eduardo/Quiz-Portugues/)           |
+| Trilha das Habilidades | [`apps/trilha-das-habilidades/`](apps/trilha-das-habilidades/) | [Abrir Trilha](https://allansousa00.github.io/jogo-eduardo/Trilha-das-Habilidades/) |
 
 ## Início rápido
 
@@ -34,13 +31,13 @@ A raiz do repositório não publica um seletor de jogos.
 
 | Comando                | Função                                                        |
 | ---------------------- | ------------------------------------------------------------- |
-| `npm run serve`        | Serve as duas pastas localmente em `127.0.0.1:4173`           |
+| `npm run serve`        | Serve os dois aplicativos nas rotas públicas locais           |
 | `npm run check:source` | Confere sintaxe, independência das entradas e dados da trilha |
 | `npm run lint`         | Verifica os scripts de ferramentas e testes novos             |
 | `npm run format:check` | Confere formatação dos arquivos modernizados                  |
 | `npm run test:e2e`     | Executa smoke tests em cada projeto diretamente               |
 | `npm run check`        | Porta de qualidade completa                                   |
-| `npm run build:static` | Monta `dist/` com as duas pastas independentes                |
+| `npm run build:static` | Monta `dist/` somente com arquivos necessários à publicação   |
 | `npm run preview`      | Serve o conteúdo montado em `dist/`                           |
 
 ## Contrato preservado
@@ -57,46 +54,46 @@ A organização não altera regras, pontuação, ordem funcional das telas nem c
 - A importação/exportação JSON do modo professor continua disponível.
 - Na trilha, acertar mantém a casa e errar retorna à posição anterior.
 
-O registro técnico da organização fica em
-[`docs/architecture/README.md`](docs/architecture/README.md). A documentação consolidada e os guias
-de manutenção ficam em [`docs/README.md`](docs/README.md),
-[`docs/MANUTENCAO.md`](docs/MANUTENCAO.md) e
-[`docs/DOCUMENTACAO_COMPLETA.html`](docs/DOCUMENTACAO_COMPLETA.html).
-
 ## Estrutura
 
 ```text
 .
-|-- Quiz-Portugues/                 # projeto autônomo do quiz
-|   |-- index.html
-|   |-- style.css
-|   `-- script.js
-|-- Trilha-das-Habilidades/         # projeto autônomo do tabuleiro
-|   |-- index.html
-|   |-- style.css
-|   |-- script.js
-|   `-- data.js
-|-- docs/                           # QA e mídia de documentação
+|-- apps/                            # fontes dos aplicativos
+|   |-- quiz-portugues/
+|   |   |-- index.html
+|   |   |-- script.js
+|   |   |-- style.css
+|   |   `-- viewport-fit.js
+|   `-- trilha-das-habilidades/
+|       |-- index.html
+|       |-- script.js
+|       |-- style.css
+|       `-- game-data.js
+|-- referencias/                     # insumos pedagogicos; nao publicados
 |-- tests/e2e/                      # testes das entradas diretas
 |-- tools/                          # automação do repositório
 `-- .github/                        # CI e publicação
 ```
 
+`dist/`, `node_modules/` e resultados de testes são regeneráveis e ficam fora do controle de
+versão.
+
 ## Conteúdo e acessibilidade
 
-- As perguntas da trilha ficam em `Trilha-das-Habilidades/data.js` e são validadas por
+- As perguntas da trilha ficam em `apps/trilha-das-habilidades/game-data.js` e são validadas por
   `npm run validate:trilha`.
-- As perguntas base do quiz ficam em `Quiz-Portugues/script.js`; perguntas cadastradas no modo
+- As perguntas base do quiz ficam em `apps/quiz-portugues/script.js`; perguntas cadastradas no modo
   professor ficam salvas no navegador.
+- O material recebido para consulta fica em `referencias/questoes-para-o-jogo.docx`.
 - A trilha oferece texto maior, alto contraste, narração, som, movimento reduzido e tela cheia.
 - O Quiz respeita movimento reduzido e mantém o modo professor acessível por teclado.
-- O checklist de uso em sala está em [`docs/CHECKLIST-QA.md`](docs/CHECKLIST-QA.md).
+- Antes de publicar, execute `npm run check` e confirme os fluxos principais em desktop e celular.
 
 ## Publicação
 
-O workflow de CI executa as verificações antes da publicação. O workflow de Pages publica as duas
-pastas diretamente, sem gerar uma página inicial conjunta. No GitHub, a origem de Pages deve estar
-configurada como **GitHub Actions**.
+O arquivo `tools/project-map.js` associa cada fonte em `apps/` à rota pública compatível. O workflow
+de Pages executa as verificações e gera `dist/` com `/Quiz-Portugues/` e
+`/Trilha-das-Habilidades/`, sem página inicial conjunta e sem publicar materiais de referência.
 
 ## Contribuição
 

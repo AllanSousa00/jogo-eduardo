@@ -3,14 +3,7 @@ const globals = require("globals");
 
 module.exports = [
   {
-    ignores: [
-      "dist/**",
-      "node_modules/**",
-      "output/**",
-      "docs/**",
-      "Quiz-Portugues/**",
-      "Trilha-das-Habilidades/**"
-    ]
+    ignores: ["dist/**", "node_modules/**", "output/**", "apps/**"]
   },
   js.configs.recommended,
   {

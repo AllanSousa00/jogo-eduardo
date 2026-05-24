@@ -7,7 +7,7 @@ npm install
 npm run serve
 ```
 
-Use uma branch curta, por exemplo `style/quiz-modal`, `test/trilha-smoke` ou `docs/arquitetura`.
+Use uma branch curta, por exemplo `style/quiz-modal`, `test/trilha-smoke` ou `fix/trilha-audio`.
 
 ## Limites funcionais
 
@@ -33,8 +33,9 @@ Quando uma alteração precisar tocar um desses itens, descreva a migração e a
 | Hooks de interação novos | atributos `data-*`                                                             |
 | Commits                  | Conventional Commits, como `test(e2e): cobre modo professor`                   |
 
-As pastas `Quiz-Portugues/` e `Trilha-das-Habilidades/` são exceções históricas preservadas por
-compatibilidade de URL.
+O código-fonte dos jogos fica em `apps/quiz-portugues/` e `apps/trilha-das-habilidades/`.
+Os diretórios com maiúsculas `Quiz-Portugues/` e `Trilha-das-Habilidades/` existem apenas no
+resultado de `npm run build:static`, para preservar as URLs publicadas.
 
 ## Verificação
 
@@ -46,7 +47,7 @@ npm run build:static
 ```
 
 Para alteração visual, confira também desktop e celular, foco visível, contraste, movimento reduzido
-e as telas cobertas no checklist de [`docs/CHECKLIST-QA.md`](docs/CHECKLIST-QA.md).
+e os fluxos principais dos dois jogos.
 
 ## Pull requests
 

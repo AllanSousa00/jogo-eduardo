@@ -3,9 +3,11 @@
 const fs = require("node:fs");
 const http = require("node:http");
 const path = require("node:path");
+const { applications } = require("./project-map");
 
 const requestedRoot = process.argv[2] || ".";
 const root = path.resolve(process.cwd(), requestedRoot);
+const projectRoot = path.resolve(__dirname, "..");
 const host = process.env.HOST || "127.0.0.1";
 const port = Number(process.env.PORT || 4173);
 
@@ -21,11 +23,23 @@ const contentTypes = {
   ".svg": "image/svg+xml"
 };
 
+function resolveDevelopmentAlias(safePath) {
+  if (root !== projectRoot) {
+    return safePath;
+  }
+
+  const [publicDirectory, ...remainingPath] = safePath.split("/");
+  const application = applications.find((entry) => entry.publicDirectory === publicDirectory);
+
+  return application ? path.join(application.sourceDirectory, ...remainingPath) : safePath;
+}
+
 function resolveFile(urlPath) {
   const safePath = decodeURIComponent(urlPath.split("?")[0]).replace(/^\/+/, "");
-  let target = path.resolve(root, safePath || "index.html");
+  const relativePath = resolveDevelopmentAlias(safePath || "index.html");
+  let target = path.resolve(root, relativePath);
 
-  if (!target.startsWith(root)) {
+  if (target !== root && !target.startsWith(`${root}${path.sep}`)) {
     return null;
   }
 

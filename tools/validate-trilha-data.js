@@ -3,9 +3,11 @@
 const fs = require("node:fs");
 const path = require("node:path");
 const vm = require("node:vm");
+const { applications } = require("./project-map");
 
 const root = path.resolve(__dirname, "..");
-const dataPath = path.join(root, "Trilha-das-Habilidades", "data.js");
+const trilha = applications.find(({ id }) => id === "trilha");
+const dataPath = path.join(root, trilha.sourceDirectory, "game-data.js");
 const source = fs.readFileSync(dataPath, "utf8");
 const sandbox = { window: {} };
 const errors = [];

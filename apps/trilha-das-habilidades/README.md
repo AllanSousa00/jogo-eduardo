@@ -83,7 +83,7 @@ As escolhas ficam salvas no navegador.
 As perguntas ficam em:
 
 ```text
-data.js
+game-data.js
 ```
 
 Formato:
@@ -116,12 +116,12 @@ node tools/validate-trilha-data.js
 
 ## Arquivos
 
-| Arquivo      | Função                                                        |
-| ------------ | ------------------------------------------------------------- |
-| `index.html` | Estrutura da tela inicial, tabuleiro, controles e modais      |
-| `style.css`  | Visual, temas, animações, responsividade e acessibilidade     |
-| `script.js`  | Regras do jogo, dado, movimento, placar e configurações       |
-| `data.js`    | Habilidades, posições das casas, paleta das casas e perguntas |
+| Arquivo        | Função                                                        |
+| -------------- | ------------------------------------------------------------- |
+| `index.html`   | Estrutura da tela inicial, tabuleiro, controles e modais      |
+| `style.css`    | Visual, temas, animações, responsividade e acessibilidade     |
+| `script.js`    | Regras do jogo, dado, movimento, placar e configurações       |
+| `game-data.js` | Habilidades, posições das casas, paleta das casas e perguntas |
 
 ## Uso em sala
 

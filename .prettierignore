@@ -1,11 +1,9 @@
 node_modules/
 dist/
 output/
-docs/DOCUMENTACAO_COMPLETA.html
-docs/media/
-Quiz-Portugues/*.js
-Quiz-Portugues/style.css
-Quiz-Portugues/index.html
-Trilha-das-Habilidades/*.js
-Trilha-das-Habilidades/style.css
-Trilha-das-Habilidades/index.html
+apps/quiz-portugues/*.js
+apps/quiz-portugues/style.css
+apps/quiz-portugues/index.html
+apps/trilha-das-habilidades/*.js
+apps/trilha-das-habilidades/style.css
+apps/trilha-das-habilidades/index.html

@@ -74,12 +74,12 @@ O campo `answer` usa a posição da alternativa correta:
 
 ## Arquivos
 
-| Arquivo      | Função                                                    |
-| ------------ | --------------------------------------------------------- |
-| `index.html` | Estrutura das telas do quiz                               |
-| `style.css`  | Aparência, temas, responsividade e animações              |
-| `script.js`  | Perguntas, regras, pontuação, salvamento e modo professor |
-| `patch.js`   | Arquivo auxiliar mantido no projeto original              |
+| Arquivo           | Função                                                    |
+| ----------------- | --------------------------------------------------------- |
+| `index.html`      | Estrutura das telas do quiz                               |
+| `style.css`       | Aparência, temas, responsividade e animações              |
+| `script.js`       | Perguntas, regras, pontuação, salvamento e modo professor |
+| `viewport-fit.js` | Ajuste da interface e dos modais ao tamanho da tela       |
 
 ## Dados salvos
 
