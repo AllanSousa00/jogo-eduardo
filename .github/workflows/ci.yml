@@ -1,0 +1,35 @@
+name: Qualidade
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Instalar Chromium para E2E
+        run: npx playwright install --with-deps chromium
+
+      - name: Verificar qualidade
+        run: npm run check
+
+      - name: Verificar build estático
+        run: npm run build:static

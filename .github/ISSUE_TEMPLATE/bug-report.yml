@@ -1,0 +1,34 @@
+name: Relatar problema
+description: Registre um defeito observado em uma atividade.
+title: "bug: "
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Atividade afetada
+      options:
+        - Hub inicial
+        - Quiz Português
+        - Trilha das Habilidades
+        - Publicação ou documentação
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Como reproduzir
+      description: Informe passos, navegador e estado exibido.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Resultado esperado
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidências
+      description: Capturas, erros de console ou observações de acessibilidade.

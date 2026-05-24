@@ -1,0 +1,11 @@
+node_modules/
+dist/
+output/
+docs/DOCUMENTACAO_COMPLETA.html
+docs/media/
+Quiz-Portugues/*.js
+Quiz-Portugues/style.css
+Quiz-Portugues/index.html
+Trilha-das-Habilidades/*.js
+Trilha-das-Habilidades/style.css
+Trilha-das-Habilidades/index.html

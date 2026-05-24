@@ -737,8 +737,10 @@ body[data-theme="dark"] .modal-card {
 
 .modal-card--teacher {
   width: min(100%, 70rem);
-  max-height: none;
-  overflow: hidden;
+  max-height: calc(100dvh - 2rem);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .modal-card h2,

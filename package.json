@@ -4,7 +4,25 @@
   "private": true,
   "description": "Atividades escolares de Lingua Portuguesa com quiz e jogo de trilha.",
   "scripts": {
-    "check": "node tools/check-project.js",
-    "validate:trilha": "node tools/validate-trilha-data.js"
+    "serve": "node tools/serve.js",
+    "check": "npm run check:source && npm run lint && npm run format:check && npm run test:e2e",
+    "check:source": "node tools/check-project.js",
+    "lint": "npm run lint:js",
+    "lint:js": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "validate:contract": "node tools/validate-contract.js",
+    "validate:trilha": "node tools/validate-trilha-data.js",
+    "test:e2e": "node tools/run-e2e.js",
+    "test:visual": "node tools/run-e2e.js --grep @visual --pass-with-no-tests",
+    "build:static": "node tools/build-static.js",
+    "preview": "node tools/serve.js dist"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.60.0",
+    "eslint": "^10.4.0",
+    "globals": "^17.6.0",
+    "prettier": "^3.8.3"
   }
 }

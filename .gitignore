@@ -1,7 +1,12 @@
 node_modules/
 dist/
 build/
+playwright-report/
+test-results/
+output/
+.cache/
 .env
 .env.*
+debug.log
 .DS_Store
 Thumbs.db

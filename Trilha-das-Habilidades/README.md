@@ -32,35 +32,35 @@ Cada partida usa 2 perguntas por habilidade. O banco tem 5 perguntas por habilid
 
 ## Tipos de pergunta
 
-| Tipo | Código |
-| --- | --- |
-| Múltipla escolha | `multiple-choice` |
-| Verdadeiro ou falso | `true-false` |
-| Completar lacuna | `fill-blank` |
-| Associação | `association` |
+| Tipo                | Código            |
+| ------------------- | ----------------- |
+| Múltipla escolha    | `multiple-choice` |
+| Verdadeiro ou falso | `true-false`      |
+| Completar lacuna    | `fill-blank`      |
+| Associação          | `association`     |
 
 ## Controles
 
-| Controle | Ação |
-| --- | --- |
-| Jogar dado | Sorteia o dado e move a caravana |
-| Modo alternado | Distribui habilidades pela trilha |
+| Controle            | Ação                                 |
+| ------------------- | ------------------------------------ |
+| Jogar dado          | Sorteia o dado e move a caravana     |
+| Modo alternado      | Distribui habilidades pela trilha    |
 | Modo por habilidade | Agrupa perguntas da mesma habilidade |
-| Reiniciar | Começa a partida de novo |
-| Tema dark/claro | Alterna o visual |
-| Tela cheia | Ajuda em projetor e apresentações |
+| Reiniciar           | Começa a partida de novo             |
+| Tema dark/claro     | Alterna o visual                     |
+| Tela cheia          | Ajuda em projetor e apresentações    |
 
 Atalhos:
 
-| Tecla | Ação |
-| --- | --- |
-| `Espaço` ou `D` | Jogar dado |
-| `1` a `4` | Escolher alternativa |
-| `R` | Reiniciar |
-| `T` | Trocar tema |
-| `F` | Tela cheia |
-| `M` | Silenciar |
-| `Esc` | Fechar painel ou tela final |
+| Tecla           | Ação                        |
+| --------------- | --------------------------- |
+| `Espaço` ou `D` | Jogar dado                  |
+| `1` a `4`       | Escolher alternativa        |
+| `R`             | Reiniciar                   |
+| `T`             | Trocar tema                 |
+| `F`             | Tela cheia                  |
+| `M`             | Silenciar                   |
+| `Esc`           | Fechar painel ou tela final |
 
 ## Configurações
 
@@ -116,12 +116,12 @@ node tools/validate-trilha-data.js
 
 ## Arquivos
 
-| Arquivo | Função |
-| --- | --- |
-| `index.html` | Estrutura da tela inicial, tabuleiro, controles e modais |
-| `style.css` | Visual, temas, animações, responsividade e acessibilidade |
-| `script.js` | Regras do jogo, dado, movimento, placar e configurações |
-| `data.js` | Habilidades, posições das casas, paleta das casas e perguntas |
+| Arquivo      | Função                                                        |
+| ------------ | ------------------------------------------------------------- |
+| `index.html` | Estrutura da tela inicial, tabuleiro, controles e modais      |
+| `style.css`  | Visual, temas, animações, responsividade e acessibilidade     |
+| `script.js`  | Regras do jogo, dado, movimento, placar e configurações       |
+| `data.js`    | Habilidades, posições das casas, paleta das casas e perguntas |
 
 ## Uso em sala
 

@@ -48,7 +48,7 @@ Também dá para exportar o banco de perguntas personalizado e importar depois e
 As perguntas iniciais ficam em `script.js`, na constante:
 
 ```js
-DEFAULT_QUESTIONS
+DEFAULT_QUESTIONS;
 ```
 
 Cada pergunta segue este formato:
@@ -74,12 +74,12 @@ O campo `answer` usa a posição da alternativa correta:
 
 ## Arquivos
 
-| Arquivo | Função |
-| --- | --- |
-| `index.html` | Estrutura das telas do quiz |
-| `style.css` | Aparência, temas, responsividade e animações |
-| `script.js` | Perguntas, regras, pontuação, salvamento e modo professor |
-| `patch.js` | Arquivo auxiliar mantido no projeto original |
+| Arquivo      | Função                                                    |
+| ------------ | --------------------------------------------------------- |
+| `index.html` | Estrutura das telas do quiz                               |
+| `style.css`  | Aparência, temas, responsividade e animações              |
+| `script.js`  | Perguntas, regras, pontuação, salvamento e modo professor |
+| `patch.js`   | Arquivo auxiliar mantido no projeto original              |
 
 ## Dados salvos
 

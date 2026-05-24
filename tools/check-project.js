@@ -9,6 +9,11 @@ const checks = [
   ["Conferindo JavaScript da trilha", ["--check", path.join(root, "Trilha-das-Habilidades", "script.js")]],
   ["Conferindo dados da trilha", ["--check", path.join(root, "Trilha-das-Habilidades", "data.js")]],
   ["Conferindo JavaScript do quiz", ["--check", path.join(root, "Quiz-Portugues", "script.js")]],
+  ["Conferindo complemento do quiz", ["--check", path.join(root, "Quiz-Portugues", "patch.js")]],
+  ["Conferindo servidor local", ["--check", path.join(root, "tools", "serve.js")]],
+  ["Conferindo runner E2E", ["--check", path.join(root, "tools", "run-e2e.js")]],
+  ["Conferindo build estatico", ["--check", path.join(root, "tools", "build-static.js")]],
+  ["Validando contrato publico", [path.join(root, "tools", "validate-contract.js")]],
   ["Validando banco da trilha", [path.join(root, "tools", "validate-trilha-data.js")]]
 ];
 

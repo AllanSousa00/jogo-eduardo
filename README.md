@@ -1,194 +1,104 @@
-# Jogos de Língua Portuguesa
+# Projetos de Língua Portuguesa
+
+Este repositório contém **dois projetos independentes**. Não há uma tela inicial para escolher entre
+eles: cada atividade é aberta diretamente pelo seu próprio `index.html`, com seus próprios arquivos,
+estilos e regras.
+
+| Projeto                | Pasta                                                | Link publicado                                                                      |
+| ---------------------- | ---------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| Quiz Português         | [`Quiz-Portugues/`](Quiz-Portugues/)                 | [Abrir Quiz](https://allansousa00.github.io/jogo-eduardo/Quiz-Portugues/)           |
+| Trilha das Habilidades | [`Trilha-das-Habilidades/`](Trilha-das-Habilidades/) | [Abrir Trilha](https://allansousa00.github.io/jogo-eduardo/Trilha-das-Habilidades/) |
 
 ![Prévia da Trilha das Habilidades](docs/media/trilha-preview.png)
 
-Repositório com dois jogos independentes de Língua Portuguesa. Eles ficam no mesmo repositório apenas para facilitar a entrega, mas cada jogo abre em sua própria pasta e funciona separado do outro.
+## Início rápido
 
-🌐 **Link online:** [allansousa00.github.io/jogo-eduardo](https://allansousa00.github.io/jogo-eduardo/)
-
-Links diretos:
-
-- [Trilha das Habilidades](https://allansousa00.github.io/jogo-eduardo/Trilha-das-Habilidades/)
-- [Quiz Português](https://allansousa00.github.io/jogo-eduardo/Quiz-Portugues/)
-
-🎬 **Demonstração:** [vídeo da Trilha das Habilidades](docs/media/demonstracao-trilha-das-habilidades.mp4)
-
-![GIF curto da trilha](docs/media/trilha-demo.gif)
-
-## Projetos
-
-| Projeto | Caminho | Para que serve |
-| --- | --- | --- |
-| Quiz Português | `Quiz-Portugues/` | Revisão rápida com perguntas, feedback, modo professor e resultado final |
-| Trilha das Habilidades | `Trilha-das-Habilidades/` | Jogo de caminho com dado 3D, caravana, perguntas por casa e tema claro/escuro |
-
-## Como abrir
-
-Abra o arquivo `index.html` do projeto desejado:
-
-```text
-Quiz-Portugues/index.html
-Trilha-das-Habilidades/index.html
-```
-
-Também é possível abrir pela página inicial do repositório:
-
-```text
-index.html
-```
-
-## Trilha Das Habilidades
-
-Na trilha, o aluno joga o dado, a caravana anda pelo caminho e uma pergunta aparece automaticamente na casa em que ele parou. Se acertar, fica na casa. Se errar, volta para a posição anterior.
-
-Recursos principais:
-
-- dado 3D com animação;
-- tema claro e tema escuro com decorações diferentes;
-- modo alto contraste, texto maior, reduzir movimento e tela cheia;
-- atalhos de teclado para projetor e sala de aula;
-- perguntas de múltipla escolha, verdadeiro/falso, completar lacuna e associação;
-- banco com 5 perguntas por habilidade;
-- resumo final por habilidade;
-- validação automática do banco de perguntas.
-
-## Quiz Português
-
-O quiz é mais direto: o aluno responde perguntas, recebe feedback e acompanha o desempenho. O modo professor permite importar/exportar perguntas em JSON.
-
-Recursos principais:
-
-- perguntas embaralhadas;
-- feedback com explicação;
-- revisão dos erros;
-- progresso salvo no navegador;
-- tema claro/escuro;
-- modo professor.
-
-## Como apresentar em sala
-
-1. Abra o jogo em tela cheia.
-2. Use projetor ou TV.
-3. Divida a turma em equipes ou deixe a turma responder em conjunto.
-4. Use o dado para criar suspense e manter a participação.
-5. Ao final, veja o resumo por habilidade para retomar os conteúdos com mais erro.
-
-Atalhos úteis da Trilha:
-
-| Tecla | Ação |
-| --- | --- |
-| `Espaço` ou `D` | Jogar o dado |
-| `1`, `2`, `3`, `4` | Responder alternativa no modal |
-| `R` | Reiniciar |
-| `T` | Trocar tema |
-| `F` | Tela cheia |
-| `M` | Silenciar tudo |
-| `Esc` | Fechar painel ou tela final |
-
-## Como editar perguntas
-
-Na Trilha, as perguntas ficam em:
-
-```text
-Trilha-das-Habilidades/data.js
-```
-
-Cada pergunta segue este formato:
-
-```js
-{
-  skill: "Ortografia",
-  type: "fill-blank",
-  difficulty: "facil",
-  prompt: "Complete: O aluno fez uma boa ___.",
-  options: ["pesquiza", "pesquisa", "pezquisa", "pesquissa"],
-  answer: 1,
-  explanation: "A forma correta é pesquisa."
-}
-```
-
-Tipos aceitos:
-
-- `multiple-choice`: múltipla escolha;
-- `true-false`: verdadeiro ou falso;
-- `fill-blank`: completar lacuna;
-- `association`: associação.
-
-Depois de editar, rode:
+Requer Node.js 20 ou superior para validação e testes; Node.js 22 LTS é a versão recomendada em
+`.nvmrc` e no CI. Os dois projetos publicados continuam sendo HTML, CSS e JavaScript estáticos.
 
 ```bash
-node tools/check-project.js
+npm install
+npm run serve
 ```
+
+Abra diretamente uma das URLs locais:
+
+```text
+http://127.0.0.1:4173/Quiz-Portugues/
+http://127.0.0.1:4173/Trilha-das-Habilidades/
+```
+
+A raiz do repositório não publica um seletor de jogos.
+
+## Scripts
+
+| Comando                | Função                                                        |
+| ---------------------- | ------------------------------------------------------------- |
+| `npm run serve`        | Serve as duas pastas localmente em `127.0.0.1:4173`           |
+| `npm run check:source` | Confere sintaxe, independência das entradas e dados da trilha |
+| `npm run lint`         | Verifica os scripts de ferramentas e testes novos             |
+| `npm run format:check` | Confere formatação dos arquivos modernizados                  |
+| `npm run test:e2e`     | Executa smoke tests em cada projeto diretamente               |
+| `npm run check`        | Porta de qualidade completa                                   |
+| `npm run build:static` | Monta `dist/` com as duas pastas independentes                |
+| `npm run preview`      | Serve o conteúdo montado em `dist/`                           |
+
+## Contrato preservado
+
+A organização não altera regras, pontuação, ordem funcional das telas nem conteúdo pedagógico.
+
+- O Quiz é iniciado somente em `/Quiz-Portugues/`.
+- A Trilha é iniciada somente em `/Trilha-das-Habilidades/`.
+- Um projeto não importa arquivos da pasta do outro nem uma camada visual de aplicação externa.
+- O progresso e as perguntas personalizadas do quiz permanecem em
+  `quiz-portugues-jogo:state-v2`.
+- Tema e configurações da trilha permanecem em `trilha-habilidades:theme` e
+  `trilha-habilidades:settings`.
+- A importação/exportação JSON do modo professor continua disponível.
+- Na trilha, acertar mantém a casa e errar retorna à posição anterior.
+
+O registro técnico da organização fica em
+[`docs/architecture/README.md`](docs/architecture/README.md). A documentação consolidada e os guias
+de manutenção ficam em [`docs/README.md`](docs/README.md),
+[`docs/MANUTENCAO.md`](docs/MANUTENCAO.md) e
+[`docs/DOCUMENTACAO_COMPLETA.html`](docs/DOCUMENTACAO_COMPLETA.html).
 
 ## Estrutura
 
 ```text
-Plataforma-Lingua-Portuguesa/
-├── Quiz-Portugues/
-├── Trilha-das-Habilidades/
-│   ├── data.js
-│   ├── index.html
-│   ├── script.js
-│   └── style.css
-├── docs/
-│   ├── CHECKLIST-QA.md
-│   └── media/
-├── tools/
-│   ├── check-project.js
-│   └── validate-trilha-data.js
-├── index.html
-├── CHANGELOG.md
-├── LICENSE
-└── README.md
+.
+|-- Quiz-Portugues/                 # projeto autônomo do quiz
+|   |-- index.html
+|   |-- style.css
+|   `-- script.js
+|-- Trilha-das-Habilidades/         # projeto autônomo do tabuleiro
+|   |-- index.html
+|   |-- style.css
+|   |-- script.js
+|   `-- data.js
+|-- docs/                           # QA e mídia de documentação
+|-- tests/e2e/                      # testes das entradas diretas
+|-- tools/                          # automação do repositório
+`-- .github/                        # CI e publicação
 ```
 
-## Perguntas frequentes
+## Conteúdo e acessibilidade
 
-**Precisa de internet?**
-Não para rodar localmente. Só precisa de internet para abrir pelo GitHub Pages.
-
-**Funciona no celular?**
-Sim. A Trilha se adapta melhor em tablets e telas maiores, mas também tem ajustes para celular.
-
-**Dá para usar em projetor?**
-Sim. Use o botão de tela cheia ou a tecla `F`.
-
-**As configurações ficam salvas?**
-Sim. Tema, som, texto maior e acessibilidade ficam salvos no navegador.
-
-**Posso colocar mais perguntas?**
-Pode. Edite `Trilha-das-Habilidades/data.js` e valide com `node tools/check-project.js`.
-
-## Qualidade
-
-Comando principal:
-
-```bash
-node tools/check-project.js
-```
-
-Ele confere sintaxe JavaScript e valida o banco de perguntas da trilha.
-
-Checklist manual:
-
-```text
-docs/CHECKLIST-QA.md
-```
-
-Se o computador tiver `npm` instalado, também pode usar `npm run check`.
+- As perguntas da trilha ficam em `Trilha-das-Habilidades/data.js` e são validadas por
+  `npm run validate:trilha`.
+- As perguntas base do quiz ficam em `Quiz-Portugues/script.js`; perguntas cadastradas no modo
+  professor ficam salvas no navegador.
+- A trilha oferece texto maior, alto contraste, narração, som, movimento reduzido e tela cheia.
+- O Quiz respeita movimento reduzido e mantém o modo professor acessível por teclado.
+- O checklist de uso em sala está em [`docs/CHECKLIST-QA.md`](docs/CHECKLIST-QA.md).
 
 ## Publicação
 
-O projeto está preparado para GitHub Pages por workflow em `.github/workflows/pages.yml`.
+O workflow de CI executa as verificações antes da publicação. O workflow de Pages publica as duas
+pastas diretamente, sem gerar uma página inicial conjunta. No GitHub, a origem de Pages deve estar
+configurada como **GitHub Actions**.
 
-Repositório remoto:
+## Contribuição
 
-```text
-git@github.com:AllanSousa00/jogo-eduardo.git
-```
-
-URL esperada após o deploy:
-
-```text
-https://allansousa00.github.io/jogo-eduardo/
-```
+Consulte [`CONTRIBUTING.md`](CONTRIBUTING.md) antes de alterar telas, perguntas ou automações.
+Mudanças relevantes devem ser registradas em [`CHANGELOG.md`](CHANGELOG.md).

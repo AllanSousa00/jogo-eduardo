@@ -73,7 +73,11 @@ if (!isPlainObject(data)) {
       fail(`${label}: precisa de pelo menos duas alternativas.`);
     }
 
-    if (!Number.isInteger(question.answer) || question.answer < 0 || question.answer >= question.options.length) {
+    if (
+      !Number.isInteger(question.answer) ||
+      question.answer < 0 ||
+      question.answer >= question.options.length
+    ) {
       fail(`${label}: resposta correta fora do intervalo de alternativas.`);
     }
 
