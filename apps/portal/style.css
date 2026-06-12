@@ -80,18 +80,15 @@ a {
 }
 
 .brand-mark {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
   width: 36px;
   height: 36px;
   border-radius: 8px;
-  background: var(--paper-raised);
-  border: 1px solid var(--line);
-  color: var(--ink);
-  font-weight: 800;
-  font-size: 1rem;
+  object-fit: cover;
 }
+
+:root[data-theme="dark"] .brand-mark-light { display: none; }
+:root[data-theme="light"] .brand-mark-dark { display: none; }
 
 .header-actions {
   display: flex;
