@@ -1,12 +1,22 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Portal de acesso aos jogos Quiz Português e Trilha das Habilidades." />
     <meta name="application-name" content="Jogos de Língua Portuguesa" />
-    <meta name="color-scheme" content="light" />
+    <meta name="color-scheme" content="dark light" />
     <title>Jogos de Língua Portuguesa</title>
+    <script>
+      (() => {
+        try {
+          const savedTheme = window.localStorage.getItem("portugues-em-jogos:theme");
+          document.documentElement.dataset.theme = savedTheme === "light" ? "light" : "dark";
+        } catch {
+          document.documentElement.dataset.theme = "dark";
+        }
+      })();
+    </script>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
@@ -15,7 +25,19 @@
         <span class="brand-mark" aria-hidden="true">LP</span>
         <span>Jogos de Língua Portuguesa</span>
       </a>
-      <span class="access-label">Uso autorizado</span>
+      <div class="header-actions">
+        <span class="access-label">Uso autorizado</span>
+        <button
+          class="theme-toggle"
+          id="theme-toggle"
+          type="button"
+          aria-label="Trocar para tema claro"
+          aria-pressed="true"
+        >
+          <span class="theme-toggle__icon" aria-hidden="true"></span>
+          <span class="theme-toggle__label">Tema claro</span>
+        </button>
+      </div>
     </header>
 
     <main class="portal" id="conteudo">
@@ -23,12 +45,12 @@
         <div class="intro-copy">
           <h1 id="portal-title">Escolha o jogo para começar</h1>
           <p>
-            Acesse uma das atividades de Língua Portuguesa. Os dois jogos ficam em pastas próprias, publicados
-            juntos em um único site.
+            Acesse uma atividade de Língua Portuguesa. Os dois jogos ficam em pastas próprias e publicados
+            juntos no mesmo site.
           </p>
           <p class="restriction">
-            Uso restrito: somente pessoas autorizadas por Allan Sousa podem usar, copiar, modificar,
-            distribuir ou hospedar este material.
+            Uso restrito a pessoas autorizadas por Allan Sousa para usar, copiar, modificar, distribuir ou
+            hospedar este material.
           </p>
         </div>
 
@@ -98,18 +120,18 @@
         <div>
           <h2 id="access-request-title">Solicitação de acesso</h2>
           <p>
-            Para pedir autorização de uso, envie email para
+            Para pedir autorização, envie email para
             <a href="mailto:allancruzsousa519@gmail.com">allancruzsousa519@gmail.com</a>.
           </p>
         </div>
 
         <div class="request-template" aria-label="Modelo de solicitacao">
-          <strong>Modelo de mensagem</strong>
+          <strong>Base da solicitação</strong>
           <span>Assunto: Solicitação de acesso aos Jogos de Língua Portuguesa</span>
-          <span>Nome completo:</span>
-          <span>Instituição, turma ou finalidade de uso:</span>
-          <span>Como pretende usar ou hospedar o material:</span>
-          <span>Período previsto de uso:</span>
+          <span
+            >Informe nome completo, instituição ou finalidade, forma de uso ou hospedagem e período
+            previsto.</span
+          >
         </div>
       </section>
     </main>
@@ -118,5 +140,37 @@
       <span>Créditos: projeto organizado para Allan Sousa.</span>
       <span>Material educacional de uso autorizado.</span>
     </footer>
+    <script>
+      (() => {
+        const storageKey = "portugues-em-jogos:theme";
+        const button = document.querySelector("#theme-toggle");
+        const label = document.querySelector(".theme-toggle__label");
+
+        if (!button || !label) return;
+
+        const applyTheme = (theme) => {
+          const nextTheme = theme === "light" ? "light" : "dark";
+          const isDark = nextTheme === "dark";
+
+          document.documentElement.dataset.theme = nextTheme;
+          button.setAttribute("aria-pressed", String(isDark));
+          button.setAttribute("aria-label", isDark ? "Trocar para tema claro" : "Trocar para tema escuro");
+          label.textContent = isDark ? "Tema claro" : "Tema escuro";
+        };
+
+        applyTheme(document.documentElement.dataset.theme);
+
+        button.addEventListener("click", () => {
+          const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+          applyTheme(nextTheme);
+
+          try {
+            window.localStorage.setItem(storageKey, nextTheme);
+          } catch {
+            // A troca visual continua funcionando mesmo quando o navegador bloqueia armazenamento.
+          }
+        });
+      })();
+    </script>
   </body>
 </html>

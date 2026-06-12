@@ -14,6 +14,15 @@ async function expectNoHorizontalOverflow(page) {
   expect(metrics.documentWidth).toBeLessThanOrEqual(metrics.viewportWidth + 1);
 }
 
+async function expectNoVerticalOverflow(page) {
+  const metrics = await page.evaluate(() => ({
+    viewportHeight: window.innerHeight,
+    documentHeight: document.documentElement.scrollHeight
+  }));
+
+  expect(metrics.documentHeight).toBeLessThanOrEqual(metrics.viewportHeight + 2);
+}
+
 async function expectElementsInsideViewport(page, selectors) {
   const issues = await page.evaluate((targetSelectors) => {
     return targetSelectors.flatMap((selector) => {
@@ -61,10 +70,19 @@ for (const viewport of viewports) {
     });
 
     test(`portal: botoes e creditos sem cortes`, async ({ page }, testInfo) => {
+      await page.addInitScript(() => window.localStorage.clear());
       await page.goto("/");
 
       await expectNoHorizontalOverflow(page);
-      await expectElementsInsideViewport(page, [".site-header", "#portal-title", ".game-options"]);
+      await expectNoVerticalOverflow(page);
+      await expectElementsInsideViewport(page, [
+        ".site-header",
+        "#portal-title",
+        ".game-options",
+        ".access-request",
+        ".site-footer",
+        ".theme-toggle"
+      ]);
       await expect(page.getByRole("link", { name: /Quiz Português/ })).toBeVisible();
       await expect(page.getByRole("link", { name: /Trilha das Habilidades/ })).toBeVisible();
       await expect(page.getByText("Créditos: projeto organizado para Allan Sousa.")).toBeVisible();

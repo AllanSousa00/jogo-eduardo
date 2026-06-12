@@ -2,6 +2,7 @@ const { test, expect } = require("@playwright/test");
 
 test.describe("portal unico", () => {
   test("raiz direciona para os dois jogos publicados", async ({ page }) => {
+    await page.addInitScript(() => window.localStorage.clear());
     await page.goto("/");
 
     await expect(page).toHaveTitle(/Jogos de Língua Portuguesa/);
@@ -12,6 +13,12 @@ test.describe("portal unico", () => {
       page.getByText("Assunto: Solicitação de acesso aos Jogos de Língua Portuguesa")
     ).toBeVisible();
     await expect(page.getByText("Créditos: projeto organizado para Allan Sousa.")).toBeVisible();
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+    await expect(page.getByRole("button", { name: "Trocar para tema claro" })).toBeVisible();
+
+    await page.getByRole("button", { name: "Trocar para tema claro" }).click();
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+    await expect(page.getByRole("button", { name: "Trocar para tema escuro" })).toBeVisible();
 
     await page.getByRole("link", { name: /Quiz Português/ }).click();
     await expect(page).toHaveURL(/\/Quiz-Portugues\/$/);
