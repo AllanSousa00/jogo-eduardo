@@ -20,8 +20,7 @@ const checks = [
   ["Conferindo servidor local", ["--check", path.join(root, "tools", "serve.js")]],
   ["Conferindo runner E2E", ["--check", path.join(root, "tools", "run-e2e.js")]],
   ["Conferindo build estatico", ["--check", path.join(root, "tools", "build-static.js")]],
-  ["Validando contrato publico", [path.join(root, "tools", "validate-contract.js")]],
-  ["Validando banco da trilha", [path.join(root, "tools", "validate-trilha-data.js")]]
+  ["Validando contrato publico", [path.join(root, "tools", "validate-contract.js")]]
 ];
 
 for (const [title, args] of checks) {

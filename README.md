@@ -60,15 +60,6 @@ npm run build:static   # gera o site único em dist/
 npm run preview        # serve a pasta dist/ para conferência final
 ```
 
-Também é possível executar cada jogo isoladamente para manutenção:
-
-```bash
-npm run serve:quiz
-npm run serve:trilha
-npm run build:quiz
-npm run build:trilha
-```
-
 ## Publicação
 
 Para hospedar tudo em um único site:

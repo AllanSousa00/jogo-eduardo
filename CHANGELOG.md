@@ -32,6 +32,9 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
 ### Removed
 
+- Pacotes, builds, servidores e configurações Netlify individuais que pertenciam à ideia antiga de
+  publicar os jogos em sites separados.
+- Validador duplicado da Trilha e script visual sem testes reais.
 - Dependências visuais compartilhadas entre as duas pastas de jogos.
 - Documentação extensa e mídias de apresentação redundantes com os aplicativos.
 
