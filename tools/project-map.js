@@ -2,6 +2,12 @@
 
 const applications = [
   {
+    id: "portal",
+    sourceDirectory: "apps/portal",
+    publicDirectory: "",
+    runtimeFiles: ["index.html", "style.css"]
+  },
+  {
     id: "quiz",
     sourceDirectory: "apps/quiz-portugues",
     publicDirectory: "Quiz-Portugues",

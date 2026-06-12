@@ -6,10 +6,10 @@ const optionLetters = ["a", "b", "c", "d"];
 const DEFAULT_QUESTIONS = [
   {
     id: "base-1",
-    prompt: "Qual a forma correta da palavra “um__rela”?",
+    prompt: "Complete corretamente a palavra “mu__arela”.",
     options: ["ss", "sc", "ç", "sç"],
     answer: 2,
-    explanation: "Nesse exercício, a lacuna deve ser preenchida com “ç”."
+    explanation: "A forma correta é “muçarela”, escrita com ç."
   },
   {
     id: "base-2",
@@ -42,7 +42,7 @@ const DEFAULT_QUESTIONS = [
   {
     id: "base-6",
     prompt: "Qual a forma correta da palavra?",
-    options: ["Excessão", "Exceção", "Excessãoo", "Esceção"],
+    options: ["Excessão", "Exceção", "Escessão", "Esceção"],
     answer: 1,
     explanation: "A grafia correta é “exceção”."
   },
@@ -84,7 +84,7 @@ const DEFAULT_QUESTIONS = [
   {
     id: "base-12",
     prompt: "Qual a forma correta da palavra?",
-    options: ["Enchergar", "Enxergar", "Inxergar", "Enchergar"],
+    options: ["Enchergar", "Enxergar", "Inxergar", "Encherguar"],
     answer: 1,
     explanation: "A grafia correta é “enxergar”."
   },
@@ -192,7 +192,7 @@ const state = {
 const runtime = {
   confirmAction: null,
   activeModal: null,
-  modalRestoreFocus: null,
+  modalRestoreFocus: new Map(),
   questionTransitionTimer: 0
 };
 
@@ -704,24 +704,51 @@ function renderTeacherCustomList() {
 
   if (state.customQuestions.length === 0) {
     const emptyCard = document.createElement("article");
+    const emptyTitle = document.createElement("h4");
+    const emptyText = document.createElement("p");
+
     emptyCard.className = "teacher-question-card";
-    emptyCard.innerHTML = `
-      <h4>Nenhuma questão personalizada ainda.</h4>
-      <p>Use o formulário acima ou importe um arquivo JSON para aumentar o banco do quiz.</p>
-    `;
+    emptyTitle.textContent = "Nenhuma questão personalizada ainda.";
+    emptyText.textContent = "Use o formulário acima ou importe um arquivo JSON para aumentar o banco do quiz.";
+    emptyCard.append(emptyTitle, emptyText);
     teacherCustomList.appendChild(emptyCard);
     return;
   }
 
   state.customQuestions.forEach((question, index) => {
     const card = document.createElement("article");
+    const title = document.createElement("h4");
+    const answer = document.createElement("p");
+    const actions = document.createElement("div");
+    const removeButton = document.createElement("button");
+
     card.className = "teacher-question-card";
-    card.innerHTML = `
-      <h4>${index + 1}. ${question.prompt}</h4>
-      <p>Resposta correta: ${optionLetters[question.answer]}) ${question.options[question.answer]}</p>
-    `;
+    title.textContent = `${index + 1}. ${question.prompt}`;
+    answer.textContent = `Resposta correta: ${optionLetters[question.answer]}) ${question.options[question.answer]}`;
+    actions.className = "teacher-question-card__actions";
+    removeButton.type = "button";
+    removeButton.className = "menu-button menu-button--compact menu-button--ghost";
+    removeButton.textContent = "Remover questão";
+    removeButton.addEventListener("click", () => {
+      openConfirmModal({
+        title: "Remover esta questão?",
+        message: "A questão personalizada será retirada do banco deste navegador.",
+        confirmLabel: "Remover",
+        cancelLabel: "Cancelar",
+        onConfirm: () => removeTeacherQuestion(question.id)
+      });
+    });
+
+    actions.appendChild(removeButton);
+    card.append(title, answer, actions);
     teacherCustomList.appendChild(card);
   });
+}
+
+function removeTeacherQuestion(questionId) {
+  state.customQuestions = state.customQuestions.filter((question) => question.id !== questionId);
+  applyAndPersist();
+  showTeacherStatus("Questão personalizada removida.", "success");
 }
 
 function updateTeacherUI() {
@@ -881,13 +908,17 @@ function renderErrorsReview() {
 
   wrongEntries.forEach((entry, index) => {
     const card = document.createElement("article");
+    const title = document.createElement("h4");
+    const selected = document.createElement("p");
+    const correct = document.createElement("p");
+    const explanation = document.createElement("p");
+
     card.className = "review-card";
-    card.innerHTML = `
-      <h4>${index + 1}. ${entry.question.prompt}</h4>
-      <p>Sua resposta: ${optionLetters[entry.answer.selectedIndex]}) ${entry.question.options[entry.answer.selectedIndex]}</p>
-      <p>Revisar: ${optionLetters[entry.question.answer]}) ${entry.question.options[entry.question.answer]}</p>
-      <p>${entry.question.explanation}</p>
-    `;
+    title.textContent = `${index + 1}. ${entry.question.prompt}`;
+    selected.textContent = `Sua resposta: ${optionLetters[entry.answer.selectedIndex]}) ${entry.question.options[entry.answer.selectedIndex]}`;
+    correct.textContent = `Revisar: ${optionLetters[entry.question.answer]}) ${entry.question.options[entry.question.answer]}`;
+    explanation.textContent = entry.question.explanation;
+    card.append(title, selected, correct, explanation);
     errorsReviewList.appendChild(card);
   });
 }
@@ -1168,12 +1199,8 @@ async function importQuestionsFromFile(event) {
 }
 
 function getOpenModal() {
-  if (!teacherModal.hidden) {
-    return teacherModal;
-  }
-
-  if (!confirmModal.hidden) {
-    return confirmModal;
+  if (runtime.activeModal && !runtime.activeModal.hidden) {
+    return runtime.activeModal;
   }
 
   return null;
@@ -1181,8 +1208,10 @@ function getOpenModal() {
 
 function openModal(modal, focusTarget) {
   runtime.activeModal = modal;
-  runtime.modalRestoreFocus =
-    document.activeElement instanceof HTMLElement ? document.activeElement : null;
+  runtime.modalRestoreFocus.set(
+    modal,
+    document.activeElement instanceof HTMLElement ? document.activeElement : null
+  );
   modal.hidden = false;
   document.body.classList.add("is-modal-open");
 
@@ -1194,15 +1223,16 @@ function openModal(modal, focusTarget) {
 }
 
 function closeModal(modal) {
+  const restoreFocus = runtime.modalRestoreFocus.get(modal);
+
   modal.hidden = true;
-  runtime.activeModal = null;
-  document.body.classList.remove("is-modal-open");
+  runtime.modalRestoreFocus.delete(modal);
+  runtime.activeModal = !confirmModal.hidden ? confirmModal : !teacherModal.hidden ? teacherModal : null;
+  document.body.classList.toggle("is-modal-open", Boolean(runtime.activeModal));
 
-  if (runtime.modalRestoreFocus) {
-    runtime.modalRestoreFocus.focus({ preventScroll: true });
+  if (restoreFocus) {
+    restoreFocus.focus({ preventScroll: true });
   }
-
-  runtime.modalRestoreFocus = null;
 }
 
 function openConfirmModal(config) {

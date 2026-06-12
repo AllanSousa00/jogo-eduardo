@@ -6,14 +6,16 @@ const { applications } = require("./project-map");
 
 const root = path.resolve(__dirname, "..");
 const errors = [];
+const portal = applications.find(({ id }) => id === "portal");
 const quiz = applications.find(({ id }) => id === "quiz");
 const trilha = applications.find(({ id }) => id === "trilha");
 
-if (fs.existsSync(path.join(root, "index.html"))) {
-  errors.push("A raiz nao deve conter uma tela de escolha: abra cada projeto pela propria pasta.");
+if (!portal || portal.publicDirectory !== "") {
+  errors.push("O portal de entrada deve ser publicado na raiz do site.");
 }
 
 const files = {
+  portalPage: `${portal.sourceDirectory}/index.html`,
   quizPage: `${quiz.sourceDirectory}/index.html`,
   quizScript: `${quiz.sourceDirectory}/script.js`,
   trailPage: `${trilha.sourceDirectory}/index.html`,
@@ -21,6 +23,7 @@ const files = {
 };
 
 const requiredFragments = {
+  portalPage: ['href="./Quiz-Portugues/"', 'href="./Trilha-das-Habilidades/"', "Uso restrito", "Créditos"],
   quizPage: ['id="start-button"', 'id="teacher-mode-button"', 'id="teacher-modal"'],
   quizScript: ['"quiz-portugues-jogo:state-v2"', "exportQuestionsJson", "importQuestionsFromFile"],
   trailPage: ['id="roll-button"', 'id="question-modal"', 'id="victory-modal"'],
@@ -61,5 +64,5 @@ if (errors.length) {
 }
 
 console.log(
-  "Contrato preservado: dois projetos independentes, controles e chaves de armazenamento encontrados."
+  "Contrato preservado: portal unico, jogos independentes, controles e chaves de armazenamento encontrados."
 );

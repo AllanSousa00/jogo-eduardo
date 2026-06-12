@@ -3,7 +3,15 @@ const globals = require("globals");
 
 module.exports = [
   {
-    ignores: ["dist/**", "node_modules/**", "output/**", "apps/**"]
+    ignores: [
+      "**/dist/**",
+      "node_modules/**",
+      "output/**",
+      "apps/quiz-portugues/script.js",
+      "apps/quiz-portugues/viewport-fit.js",
+      "apps/trilha-das-habilidades/script.js",
+      "apps/trilha-das-habilidades/game-data.js"
+    ]
   },
   js.configs.recommended,
   {

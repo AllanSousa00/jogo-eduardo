@@ -28,7 +28,14 @@ function resolveDevelopmentAlias(safePath) {
     return safePath;
   }
 
-  const [publicDirectory, ...remainingPath] = safePath.split("/");
+  const normalizedPath = safePath.replace(/\\/g, "/");
+  const rootApplication = applications.find((entry) => entry.publicDirectory === "");
+
+  if (rootApplication && rootApplication.runtimeFiles.includes(normalizedPath)) {
+    return path.join(rootApplication.sourceDirectory, normalizedPath);
+  }
+
+  const [publicDirectory, ...remainingPath] = normalizedPath.split("/");
   const application = applications.find((entry) => entry.publicDirectory === publicDirectory);
 
   return application ? path.join(application.sourceDirectory, ...remainingPath) : safePath;

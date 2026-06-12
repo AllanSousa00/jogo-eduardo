@@ -9,6 +9,12 @@ npm run serve
 
 Use uma branch curta, por exemplo `style/quiz-modal`, `test/trilha-smoke` ou `fix/trilha-audio`.
 
+## Uso restrito
+
+Este repositório não é de uso livre. Só contribua, copie, publique ou hospede o projeto se você tiver
+autorização do responsável pelo material. O arquivo `LICENSE` prevalece sobre qualquer permissão
+implícita de acesso aos arquivos.
+
 ## Limites funcionais
 
 Este projeto é usado em atividades pedagógicas. Uma contribuição de organização ou aparência não
@@ -17,7 +23,7 @@ deve mudar:
 - regras, pontuação ou progressão dos jogos;
 - chaves e formato persistido em `localStorage`;
 - importação/exportação JSON do modo professor;
-- rotas públicas existentes;
+- rotas públicas existentes: `/`, `/Quiz-Portugues/` e `/Trilha-das-Habilidades/`;
 - a separação entre os projetos; um jogo não deve depender dos arquivos do outro;
 - perguntas ou respostas corretas sem validação pedagógica explícita.
 

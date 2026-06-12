@@ -717,6 +717,10 @@ button {
   overflow: hidden;
 }
 
+#confirm-modal {
+  z-index: 30;
+}
+
 .modal-card {
   --modal-scale: 1;
   width: min(100%, 34rem);
@@ -942,6 +946,16 @@ body[data-theme="dark"] .teacher-panel {
   color: rgba(246, 246, 246, 0.82);
   font-size: 0.95rem;
   line-height: 1.35;
+}
+
+.teacher-question-card__actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.8rem;
+}
+
+.teacher-question-card__actions .menu-button {
+  min-width: 0;
 }
 
 .sr-only {

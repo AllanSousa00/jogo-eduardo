@@ -13,7 +13,7 @@
     return document.querySelector(".modal-backdrop:not([hidden])");
   }
 
-  function fitElementToViewport(element, cssVariableName) {
+  function fitElementToViewport(element, cssVariableName, { fitHeight = true } = {}) {
     if (!(element instanceof HTMLElement)) {
       return;
     }
@@ -34,7 +34,8 @@
       return;
     }
 
-    const scale = Math.min(1, availableWidth / naturalWidth, availableHeight / naturalHeight);
+    const heightScale = fitHeight ? availableHeight / naturalHeight : 1;
+    const scale = Math.min(1, availableWidth / naturalWidth, heightScale);
     const safeScale = Number.isFinite(scale) && scale > 0 ? scale : 1;
     element.style.setProperty(cssVariableName, safeScale.toFixed(4));
   }
@@ -45,7 +46,9 @@
 
     const openModal = getOpenModal();
     if (openModal) {
-      fitElementToViewport(openModal.querySelector(".modal-card"), "--modal-scale");
+      fitElementToViewport(openModal.querySelector(".modal-card"), "--modal-scale", {
+        fitHeight: false
+      });
     }
   }
 

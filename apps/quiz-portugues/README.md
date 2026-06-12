@@ -1,57 +1,37 @@
 # Quiz Português
 
-O **Quiz Português** é a versão mais direta do projeto. Ele apresenta perguntas de múltipla escolha, mostra se o aluno acertou ou errou e fecha a atividade com um resultado geral.
+Projeto web estático e independente para revisão de Língua Portuguesa. Pode ser publicado sozinho em qualquer hospedagem de arquivos estáticos.
 
-É uma boa opção para revisão rápida, estudo individual ou aplicação em sala com projetor.
+## Executar
 
-## Como usar
-
-1. Abra `index.html` no navegador.
-2. Clique para começar.
-3. Leia a pergunta.
-4. Escolha uma alternativa.
-5. Veja o feedback.
-6. Avance até terminar a lista de questões.
-
-No final, o aluno vê a pontuação e pode revisar os erros.
-
-## Recursos principais
-
-- perguntas de múltipla escolha;
-- feedback depois de cada resposta;
-- explicação da alternativa correta;
-- resultado final;
-- revisão das perguntas erradas;
-- tema claro e escuro;
-- música e efeitos sonoros;
-- modo tela cheia;
-- perguntas e alternativas embaralhadas;
-- progresso salvo no navegador;
-- modo professor para cadastrar novas perguntas;
-- importação e exportação de perguntas em JSON.
-
-## Modo professor
-
-O modo professor serve para acrescentar perguntas sem mexer direto no código.
-
-Nele é possível preencher:
-
-- enunciado;
-- quatro alternativas;
-- alternativa correta;
-- explicação da resposta.
-
-Também dá para exportar o banco de perguntas personalizado e importar depois em outro navegador.
-
-## Onde ficam as perguntas
-
-As perguntas iniciais ficam em `script.js`, na constante:
-
-```js
-DEFAULT_QUESTIONS;
+```bash
+npm run check
+npm run serve
 ```
 
-Cada pergunta segue este formato:
+Abra `http://127.0.0.1:4173/`.
+
+## Publicar
+
+```bash
+npm run build
+```
+
+Publique o conteúdo da pasta `dist/`. No Netlify, o `netlify.toml` já está configurado.
+
+## Recursos
+
+- 14 perguntas base de múltipla escolha;
+- feedback imediato e explicação da resposta;
+- pontuação final e revisão dos erros;
+- perguntas e alternativas embaralháveis;
+- progresso salvo no navegador;
+- temas claro e escuro, música e tela cheia;
+- modo professor com cadastro, remoção, importação e exportação JSON.
+
+## Banco de perguntas
+
+As perguntas base ficam em `script.js`, na constante `DEFAULT_QUESTIONS`.
 
 ```js
 {
@@ -63,38 +43,13 @@ Cada pergunta segue este formato:
 }
 ```
 
-O campo `answer` usa a posição da alternativa correta:
+O campo `answer` começa em zero: `0` é a primeira alternativa e `3` é a quarta.
 
-```text
-0 = primeira alternativa
-1 = segunda alternativa
-2 = terceira alternativa
-3 = quarta alternativa
-```
+Perguntas cadastradas no modo professor ficam somente no navegador, na chave `quiz-portugues-jogo:state-v2`. Use **Exportar JSON** para fazer cópia ou transferir o banco.
 
-## Arquivos
+## Arquivos de publicação
 
-| Arquivo           | Função                                                    |
-| ----------------- | --------------------------------------------------------- |
-| `index.html`      | Estrutura das telas do quiz                               |
-| `style.css`       | Aparência, temas, responsividade e animações              |
-| `script.js`       | Perguntas, regras, pontuação, salvamento e modo professor |
-| `viewport-fit.js` | Ajuste da interface e dos modais ao tamanho da tela       |
-
-## Dados salvos
-
-O quiz usa `localStorage`, então as informações ficam no próprio navegador.
-
-Chave usada:
-
-```text
-quiz-portugues-jogo:state-v2
-```
-
-## Quando usar
-
-- revisão antes de prova;
-- atividade no laboratório;
-- estudo individual;
-- retomada de conteúdo;
-- diagnóstico rápido de dificuldades.
+- `index.html`: telas e componentes;
+- `style.css`: visual e responsividade;
+- `script.js`: perguntas e regras;
+- `viewport-fit.js`: ajuste a telas pequenas.

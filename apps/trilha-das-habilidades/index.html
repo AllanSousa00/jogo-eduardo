@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#22577a">
+  <meta name="description" content="Jogo de trilha para revisar habilidades de Língua Portuguesa em sala ou individualmente.">
+  <meta name="application-name" content="Trilha das Habilidades">
+  <meta name="color-scheme" content="light dark">
   <title>Trilha das Habilidades</title>
   <link rel="stylesheet" href="./style.css">
 </head>
@@ -204,7 +207,14 @@
         <span class="theme-icon" aria-hidden="true"></span>
         <span id="theme-label">Tema dark</span>
       </button>
-      <button id="fullscreen-button" class="secondary-button fullscreen-button" type="button">Tela cheia</button>
+      <button id="fullscreen-button" class="secondary-button fullscreen-button" type="button">
+        <span class="fullscreen-button__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M8 3.5H3.5V8M16 3.5h4.5V8M8 20.5H3.5V16M16 20.5h4.5V16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+        <span id="fullscreen-label">Tela cheia</span>
+      </button>
     </section>
 
     <section class="board-wrap" aria-label="Tabuleiro">
