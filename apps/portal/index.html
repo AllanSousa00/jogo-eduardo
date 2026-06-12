@@ -8,10 +8,9 @@
     <meta name="color-scheme" content="dark light" />
     <title>Jogos de Língua Portuguesa</title>
     
-    <!-- Premium Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <script>
       (() => {
@@ -26,22 +25,14 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <!-- Animated Background Mesh -->
-    <div class="bg-mesh" aria-hidden="true">
-      <div class="blob blob-primary"></div>
-      <div class="blob blob-secondary"></div>
-      <div class="blob blob-tertiary"></div>
-    </div>
-
-    <!-- Glassmorphism Header Pill -->
     <div class="header-container">
-      <header class="site-header glass" aria-label="Cabecalho">
+      <header class="site-header" aria-label="Cabecalho">
         <a class="brand" href="./" aria-label="Inicio dos jogos">
           <span class="brand-mark" aria-hidden="true">LP</span>
           <span class="brand-text">Jogos de Língua Portuguesa</span>
         </a>
         <div class="header-actions">
-          <span class="access-badge">Uso restrito: Allan Sousa</span>
+          <span class="access-badge">Uso autorizado</span>
           <button
             class="theme-toggle"
             id="theme-toggle"
@@ -57,33 +48,14 @@
 
     <main class="portal-main" id="conteudo">
       <section class="hero-section" aria-labelledby="portal-title">
-        <h1 id="portal-title" class="gradient-text">Domine o<br/>Português</h1>
-        <p class="hero-subtitle">Pratique e melhore suas habilidades através de jogos rápidos e interativos. Escolha seu desafio abaixo e comece agora!</p>
-        
-        <div class="hero-stats">
-          <div class="stat-item">
-            <span class="stat-value">2</span>
-            <span class="stat-label">Jogos Exclusivos</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat-item">
-            <span class="stat-value">100%</span>
-            <span class="stat-label">Foco no Aprendizado</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat-item">
-            <span class="stat-value">+</span>
-            <span class="stat-label">Interatividade</span>
-          </div>
-        </div>
+        <h1 id="portal-title">Escolha um jogo</h1>
+        <p class="hero-subtitle">Pratique Língua Portuguesa com atividades rápidas, organizadas em dois jogos independentes.</p>
+        <p class="restriction-notice">Uso restrito a pessoas autorizadas por Allan Sousa.</p>
       </section>
 
       <section class="games-grid" aria-label="Jogos disponiveis">
         
-        <!-- Quiz Game Card -->
-        <a class="game-card glass" href="./Quiz-Portugues/">
-          <div class="game-card-bg game-card-bg--quiz"></div>
-          
+        <a class="game-card" href="./Quiz-Portugues/">
           <div class="game-card-content">
             <div class="game-header">
               <span class="game-icon-container bg-quiz">
@@ -92,30 +64,23 @@
                   <path d="M16 17h16M16 24h12M16 31h15" />
                 </svg>
               </span>
-              <div class="game-badges">
-                <span class="badge badge-blue">Rápido</span>
-                <span class="badge badge-outline">Múltipla Escolha</span>
-              </div>
             </div>
             
             <div class="game-info">
               <h2>Quiz Português</h2>
-              <p>Perguntas objetivas de resposta rápida. Conta com feedback imediato após cada resposta e um modo professor exclusivo.</p>
+              <p>Perguntas rápidas com feedback imediato e modo professor.</p>
             </div>
           </div>
           
           <div class="game-footer text-quiz">
-            <span class="btn-text">Iniciar Partida</span>
+            <span class="btn-text">Abrir jogo</span>
             <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M5 12h14M13 6l6 6-6 6" />
             </svg>
           </div>
         </a>
 
-        <!-- Trilha Game Card -->
-        <a class="game-card glass" href="./Trilha-das-Habilidades/">
-          <div class="game-card-bg game-card-bg--trilha"></div>
-          
+        <a class="game-card" href="./Trilha-das-Habilidades/">
           <div class="game-card-content">
             <div class="game-header">
               <span class="game-icon-container bg-trilha">
@@ -127,20 +92,16 @@
                   <path d="M12 12h12M12 18h20" />
                 </svg>
               </span>
-              <div class="game-badges">
-                <span class="badge badge-teal">Tabuleiro</span>
-                <span class="badge badge-outline">Estratégico</span>
-              </div>
             </div>
             
             <div class="game-info">
               <h2>Trilha das Habilidades</h2>
-              <p>Um jogo de tabuleiro interativo para revisão completa. Jogue dados, avance casas e prove suas habilidades na língua portuguesa.</p>
+              <p>Tabuleiro de revisão com dado, casas e habilidades de Português.</p>
             </div>
           </div>
           
           <div class="game-footer text-trilha">
-            <span class="btn-text">Iniciar Partida</span>
+            <span class="btn-text">Abrir jogo</span>
             <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M5 12h14M13 6l6 6-6 6" />
             </svg>
@@ -148,10 +109,6 @@
         </a>
       </section>
     </main>
-
-    <footer class="site-footer">
-      <p>Desenvolvido para fortalecer o aprendizado de Língua Portuguesa de forma dinâmica.</p>
-    </footer>
 
     <script>
       (() => {
@@ -180,30 +137,6 @@
           } catch {
             // Ignora erro
           }
-        });
-
-        // Hover effect for 3D Cards
-        const cards = document.querySelectorAll('.game-card');
-        cards.forEach(card => {
-          card.addEventListener('mousemove', e => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            card.style.setProperty('--mouse-x', `${x}px`);
-            card.style.setProperty('--mouse-y', `${y}px`);
-            
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = ((y - centerY) / centerY) * -5;
-            const rotateY = ((x - centerX) / centerX) * 5;
-            
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px) scale(1.02)`;
-          });
-          
-          card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0) scale(1)';
-          });
         });
       })();
     </script>
