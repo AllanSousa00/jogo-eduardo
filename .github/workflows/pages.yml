@@ -47,6 +47,32 @@ jobs:
           git worktree add pages-deploy origin/gh-pages
           find pages-deploy -mindepth 1 ! -path "pages-deploy/.git" ! -path "pages-deploy/.git/*" -exec rm -rf {} +
           cp -R dist/. pages-deploy/
+          cat > pages-deploy/package.json <<'EOF'
+          {
+            "private": true,
+            "scripts": {
+              "build:static": "node cloudflare-gh-pages-build.js"
+            }
+          }
+          EOF
+          cat > pages-deploy/cloudflare-gh-pages-build.js <<'EOF'
+          const fs = require("node:fs");
+          const path = require("node:path");
+
+          const root = process.cwd();
+          const output = path.join(root, "dist");
+          const ignored = new Set([".git", "dist", "package.json", "cloudflare-gh-pages-build.js"]);
+
+          fs.rmSync(output, { recursive: true, force: true });
+          fs.mkdirSync(output, { recursive: true });
+
+          fs.readdirSync(root).forEach((entry) => {
+            if (ignored.has(entry)) return;
+            fs.cpSync(path.join(root, entry), path.join(output, entry), { recursive: true });
+          });
+
+          console.log("Cloudflare Pages static output ready in dist.");
+          EOF
           touch pages-deploy/.nojekyll
           cd pages-deploy
           git add -A
