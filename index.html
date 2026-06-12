@@ -1,223 +1,122 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#102a43">
-  <title>Jogos de Língua Portuguesa</title>
-  <style>
-    :root {
-      color-scheme: light dark;
-      --ink: #102a43;
-      --muted: #587083;
-      --paper: #fbfff6;
-      --line: rgba(16, 42, 67, 0.14);
-      --blue: #22577a;
-      --gold: #ffd166;
-      --green: #3d8f5b;
-      --shadow: 0 18px 42px rgba(16, 42, 67, 0.16);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--ink);
-      background:
-        linear-gradient(180deg, #dff7fb 0 32%, #8bbd62 32% 33%, #c8ef49 33% 100%);
-    }
-
-    main {
-      width: min(960px, calc(100% - 28px));
-      margin: 0 auto;
-      padding: 38px 0;
-    }
-
-    header {
-      margin-bottom: 22px;
-      padding: 22px 0;
-    }
-
-    .eyebrow {
-      margin: 0 0 8px;
-      color: #218bad;
-      font-size: 0.9rem;
-      font-weight: 900;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(2.2rem, 7vw, 4.8rem);
-      line-height: 0.98;
-      letter-spacing: 0;
-    }
-
-    .lead {
-      max-width: 720px;
-      margin: 16px 0 0;
-      color: #314d5f;
-      font-size: clamp(1rem, 2vw, 1.25rem);
-      line-height: 1.55;
-      font-weight: 700;
-    }
-
-    .games {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .game-card {
-      min-height: 310px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 24px;
-      border: 2px solid rgba(255, 255, 255, 0.78);
-      border-radius: 22px;
-      background: rgba(255, 255, 250, 0.9);
-      box-shadow: var(--shadow);
-    }
-
-    .game-card h2 {
-      margin: 0 0 10px;
-      font-size: clamp(1.7rem, 4vw, 2.7rem);
-      line-height: 1;
-    }
-
-    .game-card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.5;
-      font-weight: 700;
-    }
-
-    .badge {
-      width: fit-content;
-      margin-bottom: 18px;
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: rgba(34, 87, 122, 0.1);
-      color: #22577a;
-      font-size: 0.82rem;
-      font-weight: 900;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      min-height: 56px;
-      margin-top: 22px;
-      border-radius: 16px;
-      color: #fff;
-      background: var(--blue);
-      box-shadow: 0 8px 0 #123a54, 0 18px 26px rgba(16, 42, 67, 0.2);
-      font-weight: 900;
-      text-decoration: none;
-      transition: transform 0.2s ease, filter 0.2s ease;
-    }
-
-    .button:hover,
-    .button:focus-visible {
-      transform: translateY(-3px);
-      filter: brightness(1.07);
-    }
-
-    .game-card:nth-child(2) .button {
-      color: #102a43;
-      background: var(--gold);
-      box-shadow: 0 8px 0 #b7841f, 0 18px 26px rgba(16, 42, 67, 0.18);
-    }
-
-    footer {
-      margin-top: 22px;
-      padding: 16px 0;
-      color: #3d596b;
-      font-weight: 700;
-    }
-
-    footer a {
-      color: inherit;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      body {
-        color: #f2fbff;
-        background:
-          linear-gradient(180deg, #051827 0 36%, #123c31 36% 100%);
-      }
-
-      .lead,
-      .game-card p,
-      footer {
-        color: #d2eaf5;
-      }
-
-      .game-card {
-        background: rgba(8, 29, 45, 0.88);
-        border-color: rgba(144, 221, 255, 0.2);
-      }
-
-      .badge {
-        color: #dff6ff;
-        background: rgba(144, 221, 255, 0.14);
-      }
-    }
-
-    @media (max-width: 760px) {
-      .games {
-        grid-template-columns: 1fr;
-      }
-
-      .game-card {
-        min-height: 260px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <main>
-    <header>
-      <p class="eyebrow">Acesso separado</p>
-      <h1>Jogos independentes</h1>
-      <p class="lead">
-        Estes são dois jogos diferentes. Cada um abre em sua própria pasta, com suas próprias telas, regras e arquivos.
-      </p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portal de acesso aos jogos Quiz Português e Trilha das Habilidades." />
+    <meta name="application-name" content="Jogos de Língua Portuguesa" />
+    <meta name="color-scheme" content="light" />
+    <title>Jogos de Língua Portuguesa</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="site-header" aria-label="Cabecalho">
+      <a class="brand" href="./" aria-label="Inicio dos jogos">
+        <span class="brand-mark" aria-hidden="true">LP</span>
+        <span>Jogos de Língua Portuguesa</span>
+      </a>
+      <span class="access-label">Uso autorizado</span>
     </header>
 
-    <section class="games" aria-label="Jogos disponíveis">
-      <article class="game-card">
-        <div>
-          <span class="badge">Jogo 1</span>
-          <h2>Trilha das Habilidades</h2>
-          <p>Jogo de caminho com caravana estudantil, dado 3D, casas de habilidades e perguntas de Português.</p>
+    <main class="portal" id="conteudo">
+      <section class="intro" aria-labelledby="portal-title">
+        <div class="intro-copy">
+          <h1 id="portal-title">Escolha o jogo para começar</h1>
+          <p>
+            Acesse uma das atividades de Língua Portuguesa. Os dois jogos ficam em pastas próprias, publicados
+            juntos em um único site.
+          </p>
+          <p class="restriction">
+            Uso restrito: somente pessoas autorizadas por Allan Sousa podem usar, copiar, modificar,
+            distribuir ou hospedar este material.
+          </p>
         </div>
-        <a class="button" href="./Trilha-das-Habilidades/index.html">Abrir somente a Trilha</a>
-      </article>
 
-      <article class="game-card">
-        <div>
-          <span class="badge">Jogo 2</span>
-          <h2>Quiz Português</h2>
-          <p>Quiz direto de perguntas e respostas, com feedback, resultado final e modo professor.</p>
+        <div class="intro-art" aria-hidden="true">
+          <svg viewBox="0 0 420 300" role="img">
+            <path class="art-sheet" d="M63 82h142c20 0 36 16 36 36v130H99c-20 0-36-16-36-36V82Z" />
+            <path
+              class="art-sheet art-sheet--right"
+              d="M215 82h142v130c0 20-16 36-36 36H179V118c0-20 16-36 36-36Z"
+            />
+            <path class="art-line" d="M105 128h82M105 158h64M105 188h86M233 128h82M233 158h58M233 188h74" />
+            <path class="art-track" d="M104 249c33-32 71-42 113-31 48 13 82-5 100-49" />
+            <circle class="art-node art-node--one" cx="104" cy="249" r="14" />
+            <circle class="art-node art-node--two" cx="219" cy="219" r="14" />
+            <circle class="art-node art-node--three" cx="317" cy="169" r="14" />
+            <rect class="art-card" x="250" y="35" width="84" height="58" rx="14" />
+            <path class="art-question" d="M290 54c0-7 6-12 14-12 9 0 15 5 15 13 0 13-17 12-17 25" />
+            <circle class="art-dot" cx="302" cy="85" r="4" />
+          </svg>
         </div>
-        <a class="button" href="./Quiz-Portugues/index.html">Abrir somente o Quiz</a>
-      </article>
-    </section>
+      </section>
 
-    <footer>
-      Documentação no <a href="./README.md">README</a>. Demonstração da trilha em <a href="./docs/media/demonstracao-trilha-das-habilidades.mp4">vídeo</a>.
+      <section class="game-options" aria-label="Jogos disponiveis">
+        <a class="game-button game-button--quiz" href="./Quiz-Portugues/">
+          <span class="game-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48">
+              <path d="M12 10h24a4 4 0 0 1 4 4v24H14a6 6 0 0 1-6-6V14a4 4 0 0 1 4-4Z" />
+              <path d="M16 17h16M16 24h12M16 31h15" />
+            </svg>
+          </span>
+          <span class="game-text">
+            <strong>Quiz Português</strong>
+            <span>Perguntas rápidas com feedback imediato e modo professor.</span>
+          </span>
+          <span class="game-action">
+            Abrir jogo
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </span>
+        </a>
+
+        <a class="game-button game-button--trilha" href="./Trilha-das-Habilidades/">
+          <span class="game-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48">
+              <path d="M9 36c7-11 12-11 18-8 6 4 9 4 13-5" />
+              <circle cx="12" cy="36" r="4" />
+              <circle cx="27" cy="28" r="4" />
+              <circle cx="40" cy="23" r="4" />
+              <path d="M12 12h12M12 18h20" />
+            </svg>
+          </span>
+          <span class="game-text">
+            <strong>Trilha das Habilidades</strong>
+            <span>Tabuleiro de revisão com dado, casas e habilidades de Português.</span>
+          </span>
+          <span class="game-action">
+            Abrir jogo
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </span>
+        </a>
+      </section>
+
+      <section class="access-request" aria-labelledby="access-request-title">
+        <div>
+          <h2 id="access-request-title">Solicitação de acesso</h2>
+          <p>
+            Para pedir autorização de uso, envie email para
+            <a href="mailto:allancruzsousa519@gmail.com">allancruzsousa519@gmail.com</a>.
+          </p>
+        </div>
+
+        <div class="request-template" aria-label="Modelo de solicitacao">
+          <strong>Modelo de mensagem</strong>
+          <span>Assunto: Solicitação de acesso aos Jogos de Língua Portuguesa</span>
+          <span>Nome completo:</span>
+          <span>Instituição, turma ou finalidade de uso:</span>
+          <span>Como pretende usar ou hospedar o material:</span>
+          <span>Período previsto de uso:</span>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Créditos: projeto organizado para Allan Sousa.</span>
+      <span>Material educacional de uso autorizado.</span>
     </footer>
-  </main>
-</body>
+  </body>
 </html>
