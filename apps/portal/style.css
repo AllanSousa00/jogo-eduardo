@@ -329,6 +329,53 @@ h1 {
   font-weight: 900;
 }
 
+.access-request {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(280px, 1.05fr);
+  gap: 18px;
+  border: 1px solid rgba(15, 138, 125, 0.22);
+  border-radius: 8px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 12px 34px rgba(31, 42, 68, 0.08);
+}
+
+.access-request h2 {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(1.15rem, 2.4vw, 1.55rem);
+  line-height: 1.15;
+  letter-spacing: 0;
+}
+
+.access-request p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+.access-request a {
+  color: var(--blue);
+  font-weight: 900;
+  overflow-wrap: anywhere;
+}
+
+.request-template {
+  display: grid;
+  gap: 7px;
+  border-left: 4px solid var(--teal);
+  padding-left: 14px;
+  color: #304052;
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+.request-template strong {
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+
 .site-footer {
   display: flex;
   justify-content: space-between;
@@ -341,7 +388,8 @@ h1 {
 
 @media (max-width: 860px) {
   .intro,
-  .game-options {
+  .game-options,
+  .access-request {
     grid-template-columns: 1fr;
   }
 
@@ -430,6 +478,14 @@ h1 {
 
   .game-action {
     padding-top: 10px;
+  }
+
+  .access-request {
+    padding: 18px;
+  }
+
+  .request-template {
+    font-size: 0.86rem;
   }
 
   .site-footer {

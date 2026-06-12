@@ -23,7 +23,14 @@ const files = {
 };
 
 const requiredFragments = {
-  portalPage: ['href="./Quiz-Portugues/"', 'href="./Trilha-das-Habilidades/"', "Uso restrito", "Créditos"],
+  portalPage: [
+    'href="./Quiz-Portugues/"',
+    'href="./Trilha-das-Habilidades/"',
+    "Uso restrito",
+    "Créditos",
+    "allancruzsousa519@gmail.com",
+    "Solicitação de acesso"
+  ],
   quizPage: ['id="start-button"', 'id="teacher-mode-button"', 'id="teacher-modal"'],
   quizScript: ['"quiz-portugues-jogo:state-v2"', "exportQuestionsJson", "importQuestionsFromFile"],
   trailPage: ['id="roll-button"', 'id="question-modal"', 'id="victory-modal"'],

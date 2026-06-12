@@ -7,6 +7,10 @@ test.describe("portal unico", () => {
     await expect(page).toHaveTitle(/Jogos de Língua Portuguesa/);
     await expect(page.getByRole("heading", { level: 1, name: "Escolha o jogo para começar" })).toBeVisible();
     await expect(page.getByText("Uso restrito")).toBeVisible();
+    await expect(page.getByRole("link", { name: "allancruzsousa519@gmail.com" })).toBeVisible();
+    await expect(
+      page.getByText("Assunto: Solicitação de acesso aos Jogos de Língua Portuguesa")
+    ).toBeVisible();
     await expect(page.getByText("Créditos: projeto organizado para Allan Sousa.")).toBeVisible();
 
     await page.getByRole("link", { name: /Quiz Português/ }).click();
