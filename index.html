@@ -7,6 +7,14 @@
     <meta name="application-name" content="Jogos de Língua Portuguesa" />
     <meta name="color-scheme" content="dark light" />
     <title>Jogos de Língua Portuguesa</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
     <script>
       (() => {
         try {
@@ -20,103 +28,99 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <header class="site-header" aria-label="Cabecalho">
-      <a class="brand" href="./" aria-label="Inicio dos jogos">
-        <span class="brand-mark" aria-hidden="true">LP</span>
-        <span>Jogos de Língua Portuguesa</span>
-      </a>
-      <div class="header-actions">
-        <span class="access-label">Uso autorizado</span>
-        <button
-          class="theme-toggle"
-          id="theme-toggle"
-          type="button"
-          aria-label="Trocar para tema claro"
-          aria-pressed="true"
-        >
-          <span class="theme-toggle__icon" aria-hidden="true"></span>
-          <span class="theme-toggle__label">Tema claro</span>
-        </button>
-      </div>
-    </header>
-
-    <main class="portal" id="conteudo">
-      <section class="intro" aria-labelledby="portal-title">
-        <div class="intro-copy">
-          <h1 id="portal-title">Escolha um jogo</h1>
-          <p>Pratique Língua Portuguesa com atividades rápidas, organizadas em dois jogos independentes.</p>
-          <p class="restriction">Uso restrito a pessoas autorizadas por Allan Sousa.</p>
+    <div class="header-container">
+      <header class="site-header" aria-label="Cabecalho">
+        <a class="brand" href="./" aria-label="Inicio dos jogos">
+          <img src="./logo.png" alt="Logo" class="brand-mark brand-mark-light" aria-hidden="true" />
+          <img src="./logo-dark.png" alt="Logo" class="brand-mark brand-mark-dark" aria-hidden="true" />
+          <span class="brand-text">Jogos de Língua Portuguesa</span>
+        </a>
+        <div class="header-actions">
+          <span class="access-badge">Uso autorizado</span>
+          <button
+            class="theme-toggle"
+            id="theme-toggle"
+            type="button"
+            aria-label="Trocar para tema claro"
+            aria-pressed="true"
+          >
+            <span class="theme-toggle__icon" aria-hidden="true"></span>
+          </button>
         </div>
+      </header>
+    </div>
 
-        <div class="intro-art" aria-hidden="true">
-          <svg viewBox="0 0 420 300" role="img">
-            <path class="art-sheet" d="M63 82h142c20 0 36 16 36 36v130H99c-20 0-36-16-36-36V82Z" />
-            <path
-              class="art-sheet art-sheet--right"
-              d="M215 82h142v130c0 20-16 36-36 36H179V118c0-20 16-36 36-36Z"
-            />
-            <path class="art-line" d="M105 128h82M105 158h64M105 188h86M233 128h82M233 158h58M233 188h74" />
-            <path class="art-track" d="M104 249c33-32 71-42 113-31 48 13 82-5 100-49" />
-            <circle class="art-node art-node--one" cx="104" cy="249" r="14" />
-            <circle class="art-node art-node--two" cx="219" cy="219" r="14" />
-            <circle class="art-node art-node--three" cx="317" cy="169" r="14" />
-            <rect class="art-card" x="250" y="35" width="84" height="58" rx="14" />
-            <path class="art-question" d="M290 54c0-7 6-12 14-12 9 0 15 5 15 13 0 13-17 12-17 25" />
-            <circle class="art-dot" cx="302" cy="85" r="4" />
-          </svg>
-        </div>
+    <main class="portal-main" id="conteudo">
+      <section class="hero-section" aria-labelledby="portal-title">
+        <h1 id="portal-title">Escolha um jogo</h1>
+        <p class="hero-subtitle">
+          Pratique Língua Portuguesa com atividades rápidas, organizadas em dois jogos independentes.
+        </p>
+        <p class="restriction-notice">Uso restrito a pessoas autorizadas por Allan Sousa.</p>
       </section>
 
       <section class="game-options" aria-label="Jogos disponiveis">
-        <a class="game-button game-button--quiz" href="./Quiz-Portugues/">
-          <span class="game-icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48">
-              <path d="M12 10h24a4 4 0 0 1 4 4v24H14a6 6 0 0 1-6-6V14a4 4 0 0 1 4-4Z" />
-              <path d="M16 17h16M16 24h12M16 31h15" />
-            </svg>
-          </span>
-          <span class="game-text">
-            <strong>Quiz Português</strong>
-            <span>Perguntas rápidas com feedback imediato e modo professor.</span>
-          </span>
-          <span class="game-action">
-            Abrir jogo
-            <svg viewBox="0 0 24 24" aria-hidden="true">
+        <a class="game-card" href="./Quiz-Portugues/">
+          <div class="game-card-content">
+            <div class="game-header">
+              <span class="game-icon-container bg-quiz">
+                <svg viewBox="0 0 48 48">
+                  <path d="M12 10h24a4 4 0 0 1 4 4v24H14a6 6 0 0 1-6-6V14a4 4 0 0 1 4-4Z" />
+                  <path d="M16 17h16M16 24h12M16 31h15" />
+                </svg>
+              </span>
+            </div>
+
+            <div class="game-info">
+              <h2>Quiz Português</h2>
+              <p>Perguntas rápidas com feedback imediato e modo professor.</p>
+            </div>
+          </div>
+
+          <div class="game-footer text-quiz">
+            <span class="btn-text">Abrir jogo</span>
+            <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M5 12h14M13 6l6 6-6 6" />
             </svg>
-          </span>
+          </div>
         </a>
 
-        <a class="game-button game-button--trilha" href="./Trilha-das-Habilidades/">
-          <span class="game-icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48">
-              <path d="M9 36c7-11 12-11 18-8 6 4 9 4 13-5" />
-              <circle cx="12" cy="36" r="4" />
-              <circle cx="27" cy="28" r="4" />
-              <circle cx="40" cy="23" r="4" />
-              <path d="M12 12h12M12 18h20" />
-            </svg>
-          </span>
-          <span class="game-text">
-            <strong>Trilha das Habilidades</strong>
-            <span>Tabuleiro de revisão com dado, casas e habilidades de Português.</span>
-          </span>
-          <span class="game-action">
-            Abrir jogo
-            <svg viewBox="0 0 24 24" aria-hidden="true">
+        <a class="game-card" href="./Trilha-das-Habilidades/">
+          <div class="game-card-content">
+            <div class="game-header">
+              <span class="game-icon-container bg-trilha">
+                <svg viewBox="0 0 48 48">
+                  <path d="M9 36c7-11 12-11 18-8 6 4 9 4 13-5" />
+                  <circle cx="12" cy="36" r="4" />
+                  <circle cx="27" cy="28" r="4" />
+                  <circle cx="40" cy="23" r="4" />
+                  <path d="M12 12h12M12 18h20" />
+                </svg>
+              </span>
+            </div>
+
+            <div class="game-info">
+              <h2>Trilha das Habilidades</h2>
+              <p>Tabuleiro de revisão com dado, casas e habilidades de Português.</p>
+            </div>
+          </div>
+
+          <div class="game-footer text-trilha">
+            <span class="btn-text">Abrir jogo</span>
+            <svg class="arrow-icon" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M5 12h14M13 6l6 6-6 6" />
             </svg>
-          </span>
+          </div>
         </a>
       </section>
     </main>
+
     <script>
       (() => {
         const storageKey = "portugues-em-jogos:theme";
         const button = document.querySelector("#theme-toggle");
-        const label = document.querySelector(".theme-toggle__label");
 
-        if (!button || !label) return;
+        if (!button) return;
 
         const applyTheme = (theme) => {
           const nextTheme = theme === "light" ? "light" : "dark";
@@ -125,7 +129,6 @@
           document.documentElement.dataset.theme = nextTheme;
           button.setAttribute("aria-pressed", String(isDark));
           button.setAttribute("aria-label", isDark ? "Trocar para tema claro" : "Trocar para tema escuro");
-          label.textContent = isDark ? "Tema claro" : "Tema escuro";
         };
 
         applyTheme(document.documentElement.dataset.theme);
@@ -137,7 +140,7 @@
           try {
             window.localStorage.setItem(storageKey, nextTheme);
           } catch {
-            // A troca visual continua funcionando mesmo quando o navegador bloqueia armazenamento.
+            // Ignora erro
           }
         });
       })();
