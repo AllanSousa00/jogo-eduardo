@@ -79,13 +79,10 @@ for (const viewport of viewports) {
         ".site-header",
         "#portal-title",
         ".game-options",
-        ".access-request",
-        ".site-footer",
         ".theme-toggle"
       ]);
       await expect(page.getByRole("link", { name: /Quiz Português/ })).toBeVisible();
       await expect(page.getByRole("link", { name: /Trilha das Habilidades/ })).toBeVisible();
-      await expect(page.getByText("Créditos: projeto organizado para Allan Sousa.")).toBeVisible();
       await capture(page, testInfo, "portal-inicio");
     });
 

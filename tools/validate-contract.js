@@ -27,9 +27,8 @@ const requiredFragments = {
     'href="./Quiz-Portugues/"',
     'href="./Trilha-das-Habilidades/"',
     "Uso restrito",
-    "Créditos",
-    "allancruzsousa519@gmail.com",
-    "Solicitação de acesso"
+    "theme-toggle",
+    "portugues-em-jogos:theme"
   ],
   quizPage: ['id="start-button"', 'id="teacher-mode-button"', 'id="teacher-modal"'],
   quizScript: ['"quiz-portugues-jogo:state-v2"', "exportQuestionsJson", "importQuestionsFromFile"],

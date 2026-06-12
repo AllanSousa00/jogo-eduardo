@@ -6,13 +6,10 @@ test.describe("portal unico", () => {
     await page.goto("/");
 
     await expect(page).toHaveTitle(/Jogos de Língua Portuguesa/);
-    await expect(page.getByRole("heading", { level: 1, name: "Escolha o jogo para começar" })).toBeVisible();
+    await expect(page.getByRole("heading", { level: 1, name: "Escolha um jogo" })).toBeVisible();
     await expect(page.getByText("Uso restrito")).toBeVisible();
-    await expect(page.getByRole("link", { name: "allancruzsousa519@gmail.com" })).toBeVisible();
-    await expect(
-      page.getByText("Assunto: Solicitação de acesso aos Jogos de Língua Portuguesa")
-    ).toBeVisible();
-    await expect(page.getByText("Créditos: projeto organizado para Allan Sousa.")).toBeVisible();
+    await expect(page.getByText("Solicitação de acesso")).toHaveCount(0);
+    await expect(page.getByText("Créditos: projeto organizado para Allan Sousa.")).toHaveCount(0);
     await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
     await expect(page.getByRole("button", { name: "Trocar para tema claro" })).toBeVisible();
 
