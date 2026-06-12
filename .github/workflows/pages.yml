@@ -7,23 +7,20 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   publicar:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Baixar repositório
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Preparar Node.js
         uses: actions/setup-node@v4
@@ -42,14 +39,16 @@ jobs:
           npm run check
           npm run build:static
 
-      - name: Configurar GitHub Pages
-        uses: actions/configure-pages@v5
-
-      - name: Enviar artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-
-      - name: Publicar artifact
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Publicar dist no branch gh-pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin gh-pages
+          git worktree add pages-deploy origin/gh-pages
+          find pages-deploy -mindepth 1 ! -path "pages-deploy/.git" ! -path "pages-deploy/.git/*" -exec rm -rf {} +
+          cp -R dist/. pages-deploy/
+          touch pages-deploy/.nojekyll
+          cd pages-deploy
+          git add -A
+          git commit -m "Deploy GitHub Pages" || echo "Sem mudancas para publicar."
+          git push origin HEAD:gh-pages --force

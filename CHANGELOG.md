@@ -19,6 +19,8 @@ O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/).
 
 ### Changed
 
+- Publicação do GitHub Pages voltou a sincronizar o build `dist/` pelo branch `gh-pages`, evitando
+  o ambiente protegido `github-pages`.
 - Corrigida a adaptação do modo professor para manter texto legível e conteúdo rolável.
 - Corrigido o tabuleiro móvel da Trilha para permitir acesso por rolagem a todas as casas.
 - Corrigidos o ícone de tela cheia, uma questão corrompida e alternativas duplicadas do Quiz.
