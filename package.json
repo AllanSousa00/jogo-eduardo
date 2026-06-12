@@ -1,0 +1,6 @@
+{
+  "private": true,
+  "scripts": {
+    "build:static": "node cloudflare-gh-pages-build.js"
+  }
+}
