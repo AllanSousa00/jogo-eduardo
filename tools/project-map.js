@@ -5,7 +5,7 @@ const applications = [
     id: "portal",
     sourceDirectory: "apps/portal",
     publicDirectory: "",
-    runtimeFiles: ["index.html", "style.css", "logo.png", "logo-dark.png"]
+    runtimeFiles: ["index.html", "style.css", "favicon.svg", "logo.png", "logo-dark.png"]
   },
   {
     id: "quiz",
