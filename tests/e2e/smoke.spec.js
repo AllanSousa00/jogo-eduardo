@@ -10,7 +10,7 @@ test.describe("portal unico", () => {
     await expect(page.getByText("Uso restrito")).toBeVisible();
     await expect(page.getByRole("link", { name: "Solicitar acesso" })).toHaveAttribute(
       "href",
-      "https://portal-de-direitos-calculadora.pages.dev/"
+      "https://site-de-pedidos-pt.pages.dev/"
     );
     await expect(page.getByText("Créditos: projeto organizado para Allan Sousa.")).toHaveCount(0);
     await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");

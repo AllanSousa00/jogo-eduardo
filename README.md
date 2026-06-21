@@ -15,8 +15,8 @@ Site educacional com um portal único e dois jogos de revisão:
 
 O formulário de autorização é um projeto separado. Ele não faz parte do build deste repositório:
 
-- [Solicitar autorização de uso](https://portal-de-direitos-calculadora.pages.dev/)
-- [Código do portal de solicitações](https://github.com/AllanSousa00/Calculadorasite)
+- [Solicitar autorização de uso](https://site-de-pedidos-pt.pages.dev/)
+- [Código do portal de solicitações](https://github.com/AllanSousa00/site-de-pedidos-pt)
 
 ## Termos de uso
 
