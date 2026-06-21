@@ -6,7 +6,7 @@ const vm = require("node:vm");
 
 const scriptPath = path.join(__dirname, "script.js");
 const source = fs.readFileSync(scriptPath, "utf8");
-const match = source.match(/const DEFAULT_QUESTIONS = (\[[\s\S]*?\n\]);\n\nconst appRoot/);
+const match = source.match(/const DEFAULT_QUESTIONS = (\[[\s\S]*?\r?\n\]);\r?\n\r?\nconst appRoot/);
 const errors = [];
 
 if (!match) {

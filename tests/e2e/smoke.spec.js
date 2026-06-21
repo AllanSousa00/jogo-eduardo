@@ -8,7 +8,10 @@ test.describe("portal unico", () => {
     await expect(page).toHaveTitle(/Jogos de Língua Portuguesa/);
     await expect(page.getByRole("heading", { level: 1, name: "Escolha um jogo" })).toBeVisible();
     await expect(page.getByText("Uso restrito")).toBeVisible();
-    await expect(page.getByText("Solicitação de acesso")).toHaveCount(0);
+    await expect(page.getByRole("link", { name: "Solicitar acesso" })).toHaveAttribute(
+      "href",
+      "https://site-de-pedidos-pt.pages.dev/"
+    );
     await expect(page.getByText("Créditos: projeto organizado para Allan Sousa.")).toHaveCount(0);
     await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
     await expect(page.getByRole("button", { name: "Trocar para tema claro" })).toBeVisible();

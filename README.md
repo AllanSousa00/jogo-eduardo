@@ -1,108 +1,94 @@
 # Jogos de Língua Portuguesa
 
-Site educacional com uma tela inicial única e dois jogos de revisão de Língua Portuguesa:
+Site educacional com um portal único e dois jogos de revisão:
 
 - **Quiz Português**: perguntas rápidas, feedback imediato e modo professor.
 - **Trilha das Habilidades**: tabuleiro com dado, casas, habilidades e perguntas por etapa.
 
-A publicação principal é feita em um único site. A raiz abre o portal de escolha e os jogos continuam
-preservados em subpastas próprias:
+## Rotas publicadas
 
-| Rota publicada             | Conteúdo               | Fonte                          |
+| Rota                       | Conteúdo               | Fonte                          |
 | -------------------------- | ---------------------- | ------------------------------ |
 | `/`                        | Portal de seleção      | `apps/portal/`                 |
 | `/Quiz-Portugues/`         | Quiz Português         | `apps/quiz-portugues/`         |
 | `/Trilha-das-Habilidades/` | Trilha das Habilidades | `apps/trilha-das-habilidades/` |
 
-## Créditos e uso
+O formulário de autorização é um projeto separado. Ele não faz parte do build deste repositório:
 
-Projeto organizado para **Allan Sousa**.
+- [Solicitar autorização de uso](https://site-de-pedidos-pt.pages.dev/)
+- [Código do portal de solicitações](https://github.com/AllanSousa00/site-de-pedidos-pt)
 
-Este material é de uso restrito. Somente pessoas, instituições ou serviços autorizados pelo
-responsável do projeto podem utilizar, copiar, modificar, distribuir, publicar ou hospedar estes
-arquivos. Consulte `LICENSE` antes de reutilizar qualquer parte do projeto.
+## Termos de uso
 
-Para solicitar acesso, envie email para **allancruzsousa519@gmail.com**.
+Copyright © 2026 Allan Sousa. Todos os direitos reservados.
 
-Modelo recomendado de solicitação:
+Este é um projeto de **uso restrito**. O acesso ao site, ao repositório ou aos arquivos não concede
+licença de uso nem transfere qualquer direito sobre o código, os textos, as perguntas, a identidade
+visual, a documentação ou os demais materiais do projeto.
 
-```text
-Assunto: Solicitação de acesso aos Jogos de Língua Portuguesa
+Sem autorização prévia, expressa e por escrito do responsável, não é permitido:
 
-Nome completo:
-Instituição, turma ou finalidade de uso:
-Como pretende usar ou hospedar o material:
-Período previsto de uso:
-Declaro que li e aceito respeitar a licença de uso restrito.
-```
+- usar o projeto em atividades pessoais, acadêmicas, educacionais, institucionais ou comerciais;
+- copiar, modificar, adaptar, traduzir ou criar versões derivadas;
+- distribuir, publicar, vender, sublicenciar ou disponibilizar cópias;
+- hospedar o projeto, total ou parcialmente, em sites, plataformas ou repositórios;
+- remover créditos, avisos de autoria ou referências à licença.
+
+O envio do formulário representa apenas um **pedido de análise**. O uso continua proibido até que o
+solicitante receba uma autorização expressa por escrito. Qualquer autorização vale somente para a
+finalidade, o período, os jogos e as condições informadas na resposta do responsável.
+
+Consulte também o arquivo [LICENSE](LICENSE). Em caso de dúvida, escreva para
+**allancruzsousa519@gmail.com**.
 
 ## Requisitos
 
 - Node.js 20 ou superior;
 - Node.js 22 LTS recomendado;
-- Chromium do Playwright para executar os testes de navegador.
+- Chromium do Playwright para os testes de navegador.
 
-## Preparação
-
-Na raiz do workspace:
+## Desenvolvimento
 
 ```bash
 npm install
 npx playwright install chromium
+npm run serve
 ```
 
-## Comandos principais
+O portal local fica disponível em `http://127.0.0.1:4173/`.
 
-```bash
-npm run serve          # abre o portal em http://127.0.0.1:4173/
-npm run check          # valida código, dados, layout e fluxos principais
-npm run build:static   # gera o site único em dist/
-npm run preview        # serve a pasta dist/ para conferência final
-```
-
-## Publicação
-
-Para hospedar tudo em um único site:
+## Validação e build
 
 ```bash
 npm run check
 npm run build:static
+npm run preview
 ```
 
-Publique o conteúdo da pasta `dist/`. O workflow `.github/workflows/pages.yml` já faz esse processo
-automaticamente no GitHub Pages quando houver push na branch `main`.
+O build estático é gerado em `dist/`. O workflow `.github/workflows/pages.yml` publica essa pasta no
+GitHub Pages quando há alterações na branch `main`.
 
 ## Qualidade
 
-O comando `npm run check` cobre:
+`npm run check` valida:
 
-- sintaxe e estrutura dos três aplicativos do site;
-- validação dos bancos de perguntas;
+- sintaxe e estrutura do portal e dos jogos;
+- bancos de perguntas;
 - lint e formatação;
-- abertura do portal e dos dois jogos;
-- cliques do portal para cada jogo;
-- fluxos de pergunta, feedback e modo professor;
+- navegação e fluxos principais;
 - layout em desktop `1280x720` e celular `390x844`;
 - cortes horizontais, elementos fora da tela e acesso ao tabuleiro móvel.
-
-## Conteúdo pedagógico
-
-- O Quiz possui perguntas base em `apps/quiz-portugues/script.js` e aceita questões personalizadas
-  pelo modo professor.
-- A Trilha possui 10 habilidades e 50 perguntas em `apps/trilha-das-habilidades/game-data.js`.
-- O material ainda não aprovado para publicação permanece em `referencias/questoes-para-o-jogo.docx`
-  e não entra no build.
 
 ## Estrutura
 
 ```text
 .
 |-- apps/
-|   |-- portal/                  # entrada unica do site
+|   |-- portal/                  # entrada do site
 |   |-- quiz-portugues/          # jogo 1
 |   `-- trilha-das-habilidades/  # jogo 2
-|-- referencias/                 # material pedagogico nao publicado
+|-- referencias/                 # material pedagógico não publicado
 |-- tests/e2e/                   # testes funcionais e responsivos
-|-- tools/                       # automacao do workspace
-`-- .github/                     # integracao continua e GitHub Pages
+|-- tools/                       # automação do workspace
+`-- .github/                     # integração contínua e publicação
 ```
