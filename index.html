@@ -6,6 +6,7 @@
     <meta name="description" content="Portal de acesso aos jogos Quiz Português e Trilha das Habilidades." />
     <meta name="application-name" content="Jogos de Língua Portuguesa" />
     <meta name="color-scheme" content="dark light" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <title>Jogos de Língua Portuguesa</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,12 +32,23 @@
     <div class="header-container">
       <header class="site-header" aria-label="Cabecalho">
         <a class="brand" href="./" aria-label="Inicio dos jogos">
-          <img src="./logo.png" alt="Logo" class="brand-mark brand-mark-light" aria-hidden="true" />
-          <img src="./logo-dark.png" alt="Logo" class="brand-mark brand-mark-dark" aria-hidden="true" />
+          <svg class="brand-mark" viewBox="0 0 56 56" aria-hidden="true">
+            <rect x="2" y="2" width="52" height="52" rx="15" class="brand-mark__base" />
+            <path
+              d="M13 16.5c6.5-1.4 11.5.3 15 4.2v22.1c-3.6-4-8.6-5.3-15-3.9V16.5Z"
+              class="brand-mark__page brand-mark__page--blue"
+            />
+            <path
+              d="M43 16.5c-6.5-1.4-11.5.3-15 4.2v22.1c3.6-4 8.6-5.3 15-3.9V16.5Z"
+              class="brand-mark__page brand-mark__page--teal"
+            />
+            <path d="M18 23h5.5M18 28h6.5M38 23h-5.5M38 28h-6.5" class="brand-mark__lines" />
+            <path d="M38.5 15.8v8.4l-2.6-1.6-2.6 1.6v-7.5" class="brand-mark__bookmark" />
+          </svg>
           <span class="brand-text">Jogos de Língua Portuguesa</span>
         </a>
         <div class="header-actions">
-          <span class="access-badge">Uso autorizado</span>
+          <a class="access-request" href="https://site-de-pedidos-pt.pages.dev/">Solicitar acesso</a>
           <button
             class="theme-toggle"
             id="theme-toggle"
@@ -57,6 +69,12 @@
           Pratique Língua Portuguesa com atividades rápidas, organizadas em dois jogos independentes.
         </p>
         <p class="restriction-notice">Uso restrito a pessoas autorizadas por Allan Sousa.</p>
+        <a class="hero-request" href="https://site-de-pedidos-pt.pages.dev/">
+          Pedir autorização
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
       </section>
 
       <section class="game-options" aria-label="Jogos disponiveis">

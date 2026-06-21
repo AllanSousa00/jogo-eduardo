@@ -85,18 +85,45 @@ a {
 
 .brand-mark {
   display: block;
-  height: 140px;
-  width: auto;
-  border-radius: 8px;
-  object-fit: contain;
-  margin: -30px 0 -30px -15px;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.22));
 }
 
-:root[data-theme="dark"] .brand-mark-light {
-  display: none;
+.brand-mark__base {
+  fill: var(--paper-raised);
+  stroke: var(--line);
+  stroke-width: 1.5;
 }
-:root[data-theme="light"] .brand-mark-dark {
-  display: none;
+
+.brand-mark__page {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.brand-mark__page--blue {
+  stroke: var(--blue);
+}
+
+.brand-mark__page--teal {
+  stroke: var(--teal);
+}
+
+.brand-mark__lines {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.brand-mark__bookmark {
+  fill: var(--amber);
+  stroke: var(--amber);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
 }
 
 .header-actions {
@@ -105,15 +132,22 @@ a {
   gap: 12px;
 }
 
-.access-badge {
+.access-request {
   font-size: 0.8rem;
-  font-weight: 600;
-  padding: 6px 12px;
+  font-weight: 700;
+  padding: 8px 14px;
   border-radius: 999px;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  color: var(--muted);
-  text-transform: uppercase;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: var(--amber);
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.access-request:hover {
+  background: rgba(245, 158, 11, 0.2);
+  transform: translateY(-1px);
 }
 
 .theme-toggle {
@@ -216,6 +250,37 @@ a {
   font-size: 0.85rem;
   font-weight: 600;
   width: fit-content;
+}
+
+.hero-request {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 2px;
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+
+.hero-request svg {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: var(--amber);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.2s ease;
+}
+
+.hero-request:hover {
+  color: var(--amber);
+}
+
+.hero-request:hover svg {
+  transform: translateX(4px);
 }
 
 /* Game Options */
@@ -358,8 +423,14 @@ a {
     display: none;
   }
 
-  .access-badge {
-    display: none;
+  .access-request {
+    padding: 7px 10px;
+    font-size: 0;
+  }
+
+  .access-request::after {
+    content: "Solicitar";
+    font-size: 0.75rem;
   }
 
   .portal-main {
